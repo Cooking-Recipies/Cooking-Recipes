@@ -36,7 +36,7 @@ Aplikacja do publikowania i dzielenia się przepisami kucharskimi
 
 1. Sklonowanie projektu z repozytorium
 ```
- git clone https://github.com/Cooking-Recipies/Cooking-Recipes.git
+ git clone https://github.com/Cooking-Recipies/Cooking-Recipes-API.git
  ```
 2. Dodanie pliku .env
 ```
