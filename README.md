@@ -35,17 +35,23 @@ Aplikacja do publikowania i dzielenia się przepisami kucharskimi
 ### Uruchomienie aplikacji w środowisku deweloperskim
 
 1. Sklonowanie projektu z repozytorium
-    - git clone https://github.com/Cooking-Recipies/Cooking-Recipes.git
+- git clone https://github.com/Cooking-Recipies/Cooking-Recipes.git
+   
 2. Dodanie pliku .env
-    - cp .env.example .env (dla systemu linux)
-    - copy .env.example .env (dla systemu windows)
-3. Uruchomienie kontenerów dockerowych
-    - docker-compose up -d --build
+- cp .env.example .env (dla systemu linux)
+- copy .env.example .env (dla systemu windows)
+   
+3. Uruchomienie kontenerów dockerowyc
+- docker-compose up -d --build
+   
 4. Pobranie zależności
-    - docker-compose exec php composer install
+- docker-compose exec php composer install
+   
 5. Wygenerowanie klucza
-    - docker-compose exec php php artisan key:generate
+- docker-compose exec php php artisan key:generate
+   
 6. Migracja tabel w bazie danych i seed danych testowych
-    - docker-compose exec php php artisan migrate --seed
+- docker-compose exec php php artisan migrate --seed
+   
 7. Aplikacja powinna być dostępna na:
-    - http://localhost
+- http://localhost
