@@ -12,10 +12,11 @@ services:
     ports:
       - 80:80
     restart: unless-stopped
+
   php:
     build:
       context: .
-      dockerfile: ./docekr/Dockerfile
+      dockerfile: ./docker/Dockerfile
     container_name: cr-api
     working_dir: /application
     volumes:
@@ -23,6 +24,7 @@ services:
     networks:
       - cr
     restart: unless-stopped
+
   database:
     image: mysql:8.0.21
     container_name: cr-db
@@ -36,9 +38,11 @@ services:
     networks:
       - cr
     restart: unless-stopped
+
 networks:
-  map:
+  cr:
     driver: bridge
+
 volumes:
   data:
     name: mysql-data
