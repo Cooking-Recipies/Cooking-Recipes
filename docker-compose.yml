@@ -1,0 +1,44 @@
+version: '3.8'
+services:
+  web:
+    image: nginx:1.19-alpine
+    container_name: cr-webserver
+    working_dir: /application
+    volumes:
+      - ./docker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+      - .:/application
+    networks:
+      - cr
+    ports:
+      - 80:80
+    restart: unless-stopped
+  php:
+    build:
+      context: .
+      dockerfile: ./docekr/Dockerfile
+    container_name: cr-api
+    working_dir: /application
+    volumes:
+      - .:/application
+    networks:
+      - cr
+    restart: unless-stopped
+  database:
+    image: mysql:8.0.21
+    container_name: cr-db
+    environment:
+      - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${DB_DATABASE}
+      - MYSQL_USER=${DB_USERNAME}
+      - MYSQL_PASSWORD=${DB_PASSWORD}
+    ports:
+      - ${DB_PORT}:3306
+    networks:
+      - cr
+    restart: unless-stopped
+networks:
+  map:
+    driver: bridge
+volumes:
+  data:
+    name: mysql-data
