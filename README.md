@@ -13,18 +13,18 @@ Aplikacja do publikowania i dzielenia się przepisami kucharskimi
 
 ### Lista funkcjonalności
 
-- Możliwośd dodawania nowych przepisów według określonego szablonu
+- Możliwoś dodawania nowych przepisów według określonego szablonu
 - Zwracanie listy przepisów danego użytkownika
-- Możliwośd filtrowania zwracancyh przepisów (np. obiadowe, szybkie, wege, wyszukiwanie po
+- Możliwoś filtrowania zwracancyh przepisów (np. obiadowe, szybkie, wege, wyszukiwanie po
    nazwie)
-- Możliwośd dodawania do ulubionych
-- Możliwośd sortowania (datami, nazwami, ocenami)
-- Możliwośd dodania oceny 1-5 dla danego przepisu
-- Możliwośd dodania komentarza do oceny
+- Możliwoś dodawania do ulubionych
+- Możliwoś sortowania (datami, nazwami, ocenami)
+- Możliwoś dodania oceny 1-5 dla danego przepisu
+- Możliwoś dodania komentarza do oceny
 - Logowanie przez facebooka
-- Możliwośd usunięcia przepisu
-- Możliwośd edycji przepisu
-- Możliwośd obserwacji użytkownika
+- Możliwoś usunięcia przepisu
+- Możliwoś edycji przepisu
+- Możliwoś obserwacji użytkownika
 - Powiadomienia mailowe o nowym przepisie
 
 ### Dokumntacja
