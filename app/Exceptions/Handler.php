@@ -2,40 +2,40 @@
 
 namespace App\Exceptions;
 
+use Illuminate\Auth\AuthenticationException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Validation\ValidationException;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Exception\RouteNotFoundException;
 use Throwable;
 
 class Handler extends ExceptionHandler
 {
-    /**
-     * A list of the exception types that are not reported.
-     *
-     * @var array
-     */
-    protected $dontReport = [
-        //
-    ];
-
-    /**
-     * A list of the inputs that are never flashed for validation exceptions.
-     *
-     * @var array
-     */
-    protected $dontFlash = [
-        'current_password',
-        'password',
-        'password_confirmation',
-    ];
-
-    /**
-     * Register the exception handling callbacks for the application.
-     *
-     * @return void
-     */
-    public function register()
+    public function render($request, Throwable $exception)
     {
-        $this->reportable(function (Throwable $e) {
-            //
-        });
+        if ($exception instanceof ApiException) {
+            return $this->renderJsonResponse($exception->getMessage(), $exception->getCode());
+        }
+        if ($exception instanceof AuthenticationException) {
+            return $this->renderJsonResponse($exception->getMessage(), Response::HTTP_UNAUTHORIZED);
+        }
+        if ($exception instanceof ModelNotFoundException || $exception instanceof RouteNotFoundException) {
+            return $this->renderJsonResponse("Not found", Response::HTTP_NOT_FOUND);
+        }
+        if ($exception instanceof ValidationException) {
+            return $this->renderJsonResponse($exception->getMessage(), Response::HTTP_UNPROCESSABLE_ENTITY, $exception->errors());
+        }
+
+        return $this->renderJsonResponse($exception->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
+    }
+
+    protected function renderJsonResponse(string $message, int $code, array $data = []): JsonResponse
+    {
+        return response()->json([
+            "message" => $message,
+            "data" => $data,
+        ], $code);
     }
 }
