@@ -3,11 +3,10 @@
 namespace App\Providers;
 
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
-use Illuminate\Support\Facades\Gate;
-use App\Services\AuthenticationServices\LoginService;
-use App\Services\AuthenticationServices\RegisterService;
-use App\Services\Interfaces\LoginServiceInterface;
-use App\Services\Interfaces\RegisterServiceInterface;
+use App\Services\Authentication\UserLogger;
+use App\Services\Authentication\TestService;
+use App\Services\Authentication\UserRegisterInterface;
+use App\Services\Authentication\UserLoggerInterface;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -18,14 +17,12 @@ class AuthServiceProvider extends ServiceProvider
 
     public function register(): void
     {
-        $this->app->bind(LoginServiceInterface::class, LoginService::class);
-        $this->app->bind(RegisterServiceInterface::class, RegisterService::class);
+        $this->app->bind(UserLoggerInterface::class, UserLogger::class);
+        $this->app->bind(UserRegisterInterface::class, TestService::class);
     }
 
     public function boot()
     {
         $this->registerPolicies();
-
-        //
     }
 }

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Services\Interfaces;
+namespace App\Services\Authentication;
 
-interface LoginServiceInterface
+interface UserLoggerInterface
 {
     public function login(array $credentials): string;
 }

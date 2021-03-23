@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Services\AuthenticationServices;
+namespace App\Services\Authentication;
 
 use Illuminate\Contracts\Hashing\Hasher;
 
-abstract class BaseAuthService
+trait HasherProvider
 {
     protected Hasher $hashes;
 

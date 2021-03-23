@@ -2,14 +2,15 @@
 
 declare(strict_types=1);
 
-namespace App\Services\AuthenticationServices;
+namespace App\Services\Authentication;
 
 use App\Models\User;
-use App\Services\Interfaces\LoginServiceInterface;
 use Illuminate\Auth\AuthenticationException;
 
-class LoginService extends BaseAuthService implements LoginServiceInterface
+class UserLogger implements UserLoggerInterface
 {
+    use HasherProvider;
+
     public function login(array $credentials): string
     {
         $user = $this->getUser($credentials["email"]);

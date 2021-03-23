@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthenticationController;
+use Illuminate\Routing\Router;
 
 $router = app(Router::class);
 
