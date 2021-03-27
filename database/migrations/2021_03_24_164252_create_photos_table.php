@@ -13,7 +13,6 @@ class CreatePhotosTable extends Migration
             $table->uuid("id");
             $table->unsignedBigInteger("user_id");
             $table->string("path");
-            $table->string("name");
             $table->timestamps();
 
             $table->foreign("user_id")->references("id")->on("users")

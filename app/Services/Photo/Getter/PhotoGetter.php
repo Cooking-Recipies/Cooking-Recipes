@@ -3,14 +3,14 @@
 namespace App\Services\Photo\Getter;
 
 use App\Models\User;
-use Illuminate\Pagination\Paginator;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class PhotoGetter implements PhotoGetterInterface
 {
-    public function getUserPhotos(User $user, ?string $perPage): Paginator
+    public function getUserPhotos(User $user, ?string $perPage): LengthAwarePaginator
     {
-        /** @var Paginator $photos */
-        $photos = $user->photos()->simplePaginate($perPage);
+        /** @var LengthAwarePaginator $photos */
+        $photos = $user->photos()->paginate($perPage);
 
         return $photos->withQueryString();
     }

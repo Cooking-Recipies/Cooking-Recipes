@@ -19,7 +19,6 @@ class PhotoUploader implements PhotoUploaderInterface
     {
         $photo = new Photo([
             "user_id" => $user->id,
-            "name" => basename($path),
             "path" => $path,
         ]);
         $photo->save();
