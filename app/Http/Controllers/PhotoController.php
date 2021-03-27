@@ -17,9 +17,9 @@ use Symfony\Component\HttpFoundation\Response;
 
 class PhotoController extends Controller
 {
-    public function index(User $user, Request $request, PhotoGetterInterface $getter): ResourceCollection
+    public function index(Request $request, PhotoGetterInterface $getter): ResourceCollection
     {
-        $photosWithPagination = $getter->getUserPhotos($user, $request->query("per-page"));
+        $photosWithPagination = $getter->getUserPhotos($request->user(), $request->query("per-page"));
 
         return new PhotoCollection($photosWithPagination);
     }

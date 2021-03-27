@@ -11,6 +11,6 @@ $router->post("/register", [AuthenticationController::class, "register"]);
 
 $router->middleware("auth:sanctum")->group(function (Router $router): void {
     $router->post("/photos", [PhotoController::class, "create"]);
-    $router->get("/photos/user/{user}", [PhotoController::class, "index"]);
+    $router->get("/users/me/photos", [PhotoController::class, "index"]);
     $router->delete("/photos/{photo}", [PhotoController::class, "delete"])->middleware("can:haveAccess,photo");
 });
