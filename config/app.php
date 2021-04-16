@@ -53,6 +53,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\PhotoServiceProvider::class,
+        App\Providers\BasicServiceProvider::class,
     ],
 
     'aliases' => [
