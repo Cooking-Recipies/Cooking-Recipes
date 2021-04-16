@@ -3,23 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UpdateProfileRequest;
+use App\Http\Resources\Profile\ProfileCollection;
 use App\Http\Resources\Profile\ProfileResource;
 use App\Models\Profile;
 use App\Services\Basic\Updater\BasicUpdaterInterface;
+use App\Services\Profile\Getter\ProfileGetterInterface;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Http\Resources\Json\ResourceCollection;
 use Symfony\Component\HttpFoundation\Response;
 
 class ProfileController extends Controller
 {
-    private BasicUpdaterInterface $updater;
-
-    public function __construct(BasicUpdaterInterface $service)
-    {
-        $this->updater = $service;
-    }
-
     public function show(Profile $profile): JsonResource
     {
         return new ProfileResource($profile);
@@ -30,9 +26,16 @@ class ProfileController extends Controller
         return new ProfileResource($request->user()->profile());
     }
 
-    public function update( UpdateProfileRequest $request): JsonResponse
+    public function index(Request $request, ProfileGetterInterface $getter): ResourceCollection
     {
-        $profile = $this->updater->update($request->user()->profile(), $request->validated());
+        $profiles = $getter->get($request->query("name"));
+
+        return new ProfileCollection($profiles);
+    }
+
+    public function update(UpdateProfileRequest $request, BasicUpdaterInterface $updater): JsonResponse
+    {
+        $profile = $updater->update($request->user()->profile()->first(), $request->validated());
 
         return response()->json([
             "message" => __("resources.updated"),
