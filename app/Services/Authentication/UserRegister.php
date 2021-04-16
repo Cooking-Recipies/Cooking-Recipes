@@ -12,7 +12,10 @@ class UserRegister implements UserRegisterInterface
 
     public function register(array $credentials): void
     {
-        $credentials["password"] = $this->hashes->make($credentials["password"]);
-        User::query()->create($credentials);
+        $user = User::query()->create([
+            "email" => $credentials["email"],
+            "password" => $this->hashes->make($credentials["password"]),
+        ]);
+        $user->profile()->update(["name" => $credentials["name"]]);
     }
 }
