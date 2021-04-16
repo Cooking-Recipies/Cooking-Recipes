@@ -29,7 +29,7 @@ Aplikacja do publikowania i dzielenia się przepisami kucharskimi
 
 ### Dokumntacja
 
-- **[Dokmentacja API](https://app.swaggerhub.com/)**
+- **[Dokmentacja API](https://app.swaggerhub.com/apis-docs/My-tean/Cooking-Recipes/1.0.0#/)**
 - **[Schemat bazy danych](https://dbdiagram.io/d/6057d8ceecb54e10c33c86e0)**
 
 ### Uruchomienie aplikacji w środowisku deweloperskim
