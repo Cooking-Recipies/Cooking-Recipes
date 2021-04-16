@@ -9,6 +9,10 @@ class RegisterRequest extends ApiRequest
     public function rules(): array
     {
         return [
+            "name" => [
+                "required",
+                "unique:profiles",
+            ],
             "email" => [
                 "email:rfc,dns",
                 "unique:users",
