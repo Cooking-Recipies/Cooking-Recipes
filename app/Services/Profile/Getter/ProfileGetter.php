@@ -2,18 +2,20 @@
 
 namespace App\Services\Profile\Getter;
 
-use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Illuminate\Pagination\LengthAwarePaginator;
 use App\Models\Profile;
 
 class ProfileGetter implements ProfileGetterInterface
 {
-    public function get(?string $name): LengthAwarePaginator
+    public function get(?string $name, ?string $perPage): LengthAwarePaginator
     {
         if ($name === null)
         {
-            return Profile::query()->paginate();
+            return Profile::query()->paginate($perPage);
         }
+        /** @var LengthAwarePaginator $profiles */
+        $profiles = Profile::query()->where("name", "like", "%{$name}%")->paginate($perPage);
 
-      return  Profile::query()->where("name", "like", "%{$name}%")->paginate();
+        return  $profiles->withQueryString();
     }
 }

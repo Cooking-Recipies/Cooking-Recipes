@@ -28,7 +28,7 @@ class ProfileController extends Controller
 
     public function index(Request $request, ProfileGetterInterface $getter): ResourceCollection
     {
-        $profiles = $getter->get($request->query("name"));
+        $profiles = $getter->get($request->query("name"), $request->query("per-page"));
 
         return new ProfileCollection($profiles);
     }
