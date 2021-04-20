@@ -19,4 +19,6 @@ $router->middleware("auth:sanctum")->group(function (Router $router): void {
     $router->get("/profiles/me", [ProfileController::class, "showMe"]);
     $router->get("/profiles", [ProfileController::class, "index"]);
     $router->put("/profiles/me", [ProfileController::class, "update"]);
+
+    $router->put("/users/me/change-password", [ProfileController::class, "changePassword"]);
 });

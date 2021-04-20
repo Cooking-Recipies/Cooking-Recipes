@@ -25,9 +25,4 @@ class UserLogger implements UserLoggerInterface
     {
         return User::query()->where("email", $email)->first();
     }
-
-    private function isPasswordCorrect(User $user, string $password): bool
-    {
-        return $this->hashes->check($password, $user->password);
-    }
 }
