@@ -11,6 +11,7 @@ use Dotenv\Exception\ValidationException;
 class PasswordService  implements PasswordServiceInterface
 {
     use HasherProvider;
+
     public function changePassword(array $data, User $user): void
     {
         if (!$this->isPasswordCorrect($user, $data["current_password"])) {

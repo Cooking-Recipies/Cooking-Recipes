@@ -10,7 +10,7 @@ use App\Services\Password\PasswordServiceInterface;
 use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 
-class Account extends Controller
+class AccountController extends Controller
 {
     private PasswordServiceInterface $service;
 
@@ -19,9 +19,9 @@ class Account extends Controller
         $this->service = $service;
     }
 
-    public function changePassword(User $user, ChangePasswordRequest $request): JsonResponse
+    public function changePassword(ChangePasswordRequest $request): JsonResponse
     {
-        $this->service->changePassword($request->validated(), $user);
+        $this->service->changePassword($request->validated(), $request->user());
 
         return response()->json([
             "message" => __("passwords.updated"),
