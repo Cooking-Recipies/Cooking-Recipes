@@ -55,6 +55,8 @@ return [
         App\Providers\PhotoServiceProvider::class,
         App\Providers\BasicServiceProvider::class,
         App\Providers\ProfileServiceProvider::class,
+        App\Providers\AccountServiceProvider::class,
+
     ],
 
     'aliases' => [
