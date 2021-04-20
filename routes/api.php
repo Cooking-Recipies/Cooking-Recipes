@@ -22,4 +22,5 @@ $router->middleware("auth:sanctum")->group(function (Router $router): void {
     $router->put("/profiles/me", [ProfileController::class, "update"]);
 
     $router->put("/users/me/change-password", [AccountController::class, "changePassword"]);
+    $router->delete("/users/me", [AccountController::class, "delete"]);
 });
