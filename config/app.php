@@ -56,6 +56,7 @@ return [
         App\Providers\BasicServiceProvider::class,
         App\Providers\ProfileServiceProvider::class,
         App\Providers\AccountServiceProvider::class,
+        App\Providers\FollowServiceProvider::class,
 
     ],
 
