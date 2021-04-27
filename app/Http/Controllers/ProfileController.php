@@ -23,7 +23,7 @@ class ProfileController extends Controller
 
     public function showMe(Request $request): JsonResource
     {
-        return new ProfileResource($request->user()->profile());
+        return new ProfileResource($request->user()->profile);
     }
 
     public function index(Request $request, ProfileGetterInterface $getter): ResourceCollection
