@@ -4,18 +4,25 @@ declare(strict_types=1);
 
 namespace App\Services\Follow\Getter;
 
-use App\Models\User;
-use Illuminate\Support\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Rennokki\Befriended\Contracts\Followable;
+use Rennokki\Befriended\Contracts\Follower;
 
 class FollowGetter implements FollowGetterInterface
 {
-    public function getFollowings(User $user): Collection
+    public function getPaginatedFollowings(Follower $follower, ?string $perPage): LengthAwarePaginator
     {
-        return $user->followers()->get();
+        /** @var LengthAwarePaginator $followings */
+        $followings =  $follower->following()->paginate($perPage);
+
+        return $followings->withQueryString();
     }
 
-    public function getFollowers(User $user): Collection
+    public function getPaginatedFollowers(Followable $followable, ?string $perPage): LengthAwarePaginator
     {
-        return $user->following()->get();
+        /** @var LengthAwarePaginator $followings */
+        $followings =  $followable->followers()->paginate($perPage);
+
+        return $followings->withQueryString();
     }
 }

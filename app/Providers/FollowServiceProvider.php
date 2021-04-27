@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use App\Services\Follow\Creator\FollowCreatorInterface;
-use App\Services\Follow\Deleter\FollowCreator;
+use App\Services\Follow\Creator\FollowCreator;
 use App\Services\Follow\Deleter\FollowDeleter;
 use App\Services\Follow\Deleter\FollowDeleterInterface;
 use App\Services\Follow\Getter\FollowGetter;

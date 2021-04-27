@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Follow\Deleter;
+namespace App\Services\Follow\Creator;
 
 use App\Exceptions\ResourceException;
 use App\Models\User;

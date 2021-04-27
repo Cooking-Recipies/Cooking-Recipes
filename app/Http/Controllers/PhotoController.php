@@ -19,7 +19,7 @@ class PhotoController extends Controller
 {
     public function index(Request $request, PhotoGetterInterface $getter): ResourceCollection
     {
-        $photosWithPagination = $getter->getUserPhotos($request->user(), $request->query("per-page"));
+        $photosWithPagination = $getter->getPaginated($request->user(), $request->query("per-page"));
 
         return new PhotoCollection($photosWithPagination);
     }

@@ -7,7 +7,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 class PhotoGetter implements PhotoGetterInterface
 {
-    public function getUserPhotos(User $user, ?string $perPage): LengthAwarePaginator
+    public function getPaginated(User $user, ?string $perPage): LengthAwarePaginator
     {
         /** @var LengthAwarePaginator $photos */
         $photos = $user->photos()->paginate($perPage);

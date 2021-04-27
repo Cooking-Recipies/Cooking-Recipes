@@ -7,7 +7,7 @@ use App\Models\Profile;
 
 class ProfileGetter implements ProfileGetterInterface
 {
-    public function get(?string $name, ?string $perPage): LengthAwarePaginator
+    public function getPaginated(?string $name, ?string $perPage): LengthAwarePaginator
     {
         if ($name === null)
         {
