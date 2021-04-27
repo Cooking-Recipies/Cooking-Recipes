@@ -8,5 +8,5 @@ return [
     "updated" => "Resource has been updated successfully",
     "deleted" => "Resource has been deleted successfully",
     "not_exist" => "This resource does not exist",
-    "exist" => "This resource already exists exist ",
+    "exists" => "This resource already exists exist ",
 ];

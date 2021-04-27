@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Rennokki\Befriended\Traits\Follow;
 
 class DatabaseSeeder extends Seeder
 {
@@ -16,5 +17,6 @@ class DatabaseSeeder extends Seeder
                 ProfilesSeeder::class,
             ]);
         }
+        $this->call(FollowSeeder::class);
     }
 }

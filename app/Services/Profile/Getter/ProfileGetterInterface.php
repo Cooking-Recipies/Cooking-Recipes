@@ -6,5 +6,5 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 interface ProfileGetterInterface
 {
-    public function get(?string $name, ?string $perPage): LengthAwarePaginator;
+    public function getPaginated(?string $name, ?string $perPage): LengthAwarePaginator;
 }
