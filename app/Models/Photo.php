@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Str;
 
 class Photo extends Model implements ApiResource
@@ -25,6 +26,10 @@ class Photo extends Model implements ApiResource
         return $this->belongsTo(User::class);
     }
 
+    public function photosOnRecipes(): HasMany
+    {
+        return $this->hasMany(PhotoOnRecipe::class);
+    }
 
     protected static function boot(): void
     {

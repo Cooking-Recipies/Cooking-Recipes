@@ -9,7 +9,7 @@ class CreatePhotosTable extends Migration
 
     public function up()
     {
-        Schema::create('photos', function (Blueprint $table) {
+        Schema::create("photos", function (Blueprint $table) {
             $table->uuid("id");
             $table->unsignedBigInteger("user_id");
             $table->string("path");
@@ -22,6 +22,6 @@ class CreatePhotosTable extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('photos');
+        Schema::dropIfExists("photos");
     }
 }
