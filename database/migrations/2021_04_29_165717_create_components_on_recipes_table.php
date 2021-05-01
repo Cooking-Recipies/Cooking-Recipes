@@ -12,8 +12,7 @@ class CreateComponentsOnRecipesTable extends Migration
             $table->unsignedBigInteger("component_id")
                 ->nullable(false);
             $table->unsignedBigInteger("recipe_id");
-            $table->timestamps();
-
+            $table->string("quantity");
 
             $table->foreign("component_id")
                 ->references("id")

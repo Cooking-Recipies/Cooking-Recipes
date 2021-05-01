@@ -2,13 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Tag extends Model
+class Tag extends ModelWithoutTimestamps
 {
     protected $table = "tags";
-
     protected $fillable = [
         "name",
     ];

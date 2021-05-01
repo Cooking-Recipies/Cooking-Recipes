@@ -12,7 +12,6 @@ class CreatePhotosOnRecipesTable extends Migration
             $table->string("photo_id")
                 ->nullable(false);
             $table->unsignedBigInteger("recipe_id");
-            $table->timestamps();
 
 
             $table->foreign("photo_id")

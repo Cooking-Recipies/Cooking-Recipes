@@ -2,13 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class PhotoOnRecipe extends Model
+class PhotoOnRecipe extends ModelWithoutTimestamps
 {
     protected $table = "photos_on_recipes";
-
     protected $fillable = [
         "photo_id",
         "recipe_id",

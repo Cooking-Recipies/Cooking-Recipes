@@ -2,16 +2,15 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class ComponentOnRecipe extends Model
+class ComponentOnRecipe extends ModelWithoutTimestamps
 {
     protected $table = "components_on_recipes";
-
     protected $fillable = [
         "component_id",
         "recipe_id",
+        "quantity",
     ];
 
     public function component(): BelongsTo

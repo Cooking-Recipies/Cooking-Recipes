@@ -2,16 +2,13 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Component extends Model
+class Component extends ModelWithoutTimestamps
 {
     protected $table = "components";
-
     protected $fillable = [
         "name",
-        "quantity",
     ];
 
     public function componentsOnRecipes(): HasMany

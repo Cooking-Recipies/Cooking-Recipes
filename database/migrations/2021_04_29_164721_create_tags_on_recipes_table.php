@@ -12,7 +12,6 @@ class CreateTagsOnRecipesTable extends Migration
             $table->unsignedBigInteger("tag_id")
                 ->nullable(false);
             $table->unsignedBigInteger("recipe_id");
-            $table->timestamps();
 
 
             $table->foreign("tag_id")

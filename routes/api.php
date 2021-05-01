@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\FollowController;
 use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RecipeController;
 use Illuminate\Routing\Router;
 
 $router = app(Router::class);
@@ -27,6 +28,9 @@ $router->middleware("auth:sanctum")->group(function (Router $router): void {
     $router->delete("/users/{user}/follows", [FollowController::class, "delete"]);
     $router->get("/users/me/followers", [FollowController::class, "followersMeIndex"]);
     $router->get("/users/me/followings", [FollowController::class, "followingsMeIndex"]);
+
+    $router->post("/recipes", [RecipeController::class, "create"]);
+
 });
 
 $router->get("/profiles/{profile}", [ProfileController::class, "show"]);
