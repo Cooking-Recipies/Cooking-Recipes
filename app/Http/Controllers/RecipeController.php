@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\RecipeRequest;
 use App\Http\Resources\Recipe\RecipeResource;
 use App\Models\Recipe;
+use App\Services\Basic\Deleter\BasicDeleterInterface;
 use App\Services\Recipe\Creator\RecipeCreatorInterface;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -26,5 +27,15 @@ class RecipeController extends Controller
             "message" => __("resources.created"),
         ], Response::HTTP_OK);
     }
+
+    public function delete(Recipe $recipe, BasicDeleterInterface $deleter): JsonResponse
+    {
+        $deleter->delete($recipe);
+
+        return response()->json([
+            "message" => __("resources.deleted"),
+        ], Response::HTTP_OK);
+    }
+
 
 }

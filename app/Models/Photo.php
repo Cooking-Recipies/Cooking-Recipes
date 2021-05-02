@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Str;
 
-class Photo extends Model implements ApiResource
+class Photo extends Model implements UserResource
 {
     protected $table = "photos";
 
