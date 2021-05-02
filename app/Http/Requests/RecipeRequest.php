@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\PhotoExists;
+
 class RecipeRequest extends ApiRequest
 {
     public function rules(): array
@@ -40,7 +42,11 @@ class RecipeRequest extends ApiRequest
             "components.*.quantity" => [
                 "required",
                 "string",
-            ]
+            ],
+            "photos.*" => [
+                "string",
+                new PhotoExists($this->user()),
+            ],
         ];
     }
 }

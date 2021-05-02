@@ -24,7 +24,7 @@ class Recipe extends Model implements ApiResource
         return $this->belongsTo(User::class);
     }
 
-    public function recipeCategory(): BelongsTo
+    public function category(): BelongsTo
     {
         return $this->belongsTo(RecipeCategory::class);
     }
@@ -34,12 +34,12 @@ class Recipe extends Model implements ApiResource
         return $this->hasMany(ComponentOnRecipe::class);
     }
 
-    public function photosOnRecipes(): HasMany
+    public function photoOnRecipe(): HasMany
     {
         return $this->hasMany(PhotoOnRecipe::class);
     }
 
-    public function tagsOnRecipes(): HasMany
+    public function tagOnRecipe(): HasMany
     {
         return $this->hasMany(TagOnRecipe::class);
     }

@@ -3,12 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\RecipeRequest;
+use App\Http\Resources\Recipe\RecipeResource;
+use App\Models\Recipe;
 use App\Services\Recipe\Creator\RecipeCreatorInterface;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Resources\Json\JsonResource;
 use Symfony\Component\HttpFoundation\Response;
 
 class RecipeController extends Controller
 {
+
+    public function show(Recipe $recipe): JsonResource
+    {
+        return new RecipeResource($recipe);
+    }
 
     public function create(RecipeRequest $request, RecipeCreatorInterface $creator): JsonResponse
     {

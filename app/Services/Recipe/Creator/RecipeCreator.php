@@ -2,25 +2,17 @@
 
 namespace App\Services\Recipe\Creator;
 
-use App\Models\ComponentOnRecipe;
 use App\Models\Recipe;
-use App\Models\TagOnRecipe;
 use App\Models\User;
-use App\Services\Recipe\Component\ComponentHelper;
-use App\Services\Recipe\Tag\TagHelper;
 
 class RecipeCreator implements RecipeCreatorInterface
 {
+    private RecipePropertiesAdder $propertiesAdder;
 
-    private TagHelper $tagHelper;
-    private ComponentHelper $componentHelper;
-
-    public function __construct(TagHelper $tagHelper, ComponentHelper $componentHelper)
+    public function __construct(RecipePropertiesAdder $propertiesAdder)
     {
-        $this->tagHelper = $tagHelper;
-        $this->componentHelper = $componentHelper;
+        $this->propertiesAdder = $propertiesAdder;
     }
-
 
     public function create(User $user, array $data): void
     {
@@ -33,33 +25,13 @@ class RecipeCreator implements RecipeCreatorInterface
             "instruction" => $data["instruction"],
         ]);
 
-        $this->addComponents($data["components"], $recipe->id);
+        $this->propertiesAdder->addComponents($data["components"], $recipe->id);
 
         if (array_key_exists("tags",$data)) {
-            $this->addTags($data["tags"], $recipe->id);
+            $this->propertiesAdder->addTags($data["tags"], $recipe->id);
         }
-    }
-
-    private function addTags(array $tags, int $recipeId): void
-    {
-        foreach ($tags as $tag){
-            $tagId = $this->tagHelper->getTagId($tag);
-            TagOnRecipe::query()->create([
-                "tag_id" => $tagId,
-                "recipe_id" => $recipeId,
-            ]);
-        }
-    }
-
-    private function addComponents(array $components, int $recipeId): void
-    {
-        foreach ($components as $component){
-            $componentId = $this->componentHelper->getComponentId($component["name"]);
-            ComponentOnRecipe::query()->create([
-                "component_id" => $componentId,
-                "recipe_id" => $recipeId,
-                "quantity" => $component["quantity"],
-            ]);
+        if (array_key_exists("photos",$data)) {
+            $this->propertiesAdder->addPhotos($data["photos"], $recipe->id);
         }
     }
 }

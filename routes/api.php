@@ -30,8 +30,9 @@ $router->middleware("auth:sanctum")->group(function (Router $router): void {
     $router->get("/users/me/followings", [FollowController::class, "followingsMeIndex"]);
 
     $router->post("/recipes", [RecipeController::class, "create"]);
-
 });
+
+$router->get("/recipes/{recipe}", [RecipeController::class, "show"]);
 
 $router->get("/profiles/{profile}", [ProfileController::class, "show"]);
 $router->get("/profiles", [ProfileController::class, "index"]);
