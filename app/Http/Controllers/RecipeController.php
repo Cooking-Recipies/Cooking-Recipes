@@ -34,7 +34,9 @@ class RecipeController extends Controller
 
     public function index(Request $request, RecipeGetterInterface $getter): ResourceCollection
     {
-        $recipesWithPagination = $getter->getPaginated($request->query("title"), $request->query("per-page"));
+        $recipesWithPagination = $getter->getPaginated(
+            $request->query("title"), $request->query("category"), $request->query("tag"),
+            $request->query("component"), $request->query("per-page"));
 
         return new RecipeCollection($recipesWithPagination);
     }

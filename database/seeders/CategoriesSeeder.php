@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\RecipeCategory;
+use App\Models\Category;
 use Illuminate\Database\Seeder;
 
 class CategoriesSeeder extends Seeder
@@ -16,7 +16,7 @@ class CategoriesSeeder extends Seeder
         ];
         foreach ($categories as $category)
         {
-            RecipeCategory::query()->create([
+            Category::query()->create([
                 "name"=>$category,
             ]);
         }
