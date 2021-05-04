@@ -3,12 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\RecipeRequest;
+use App\Http\Resources\Recipe\RecipeCollection;
 use App\Http\Resources\Recipe\RecipeResource;
 use App\Models\Recipe;
 use App\Services\Basic\Deleter\BasicDeleterInterface;
 use App\Services\Recipe\Creator\RecipeCreatorInterface;
+use App\Services\Recipe\Getter\RecipeGetterInterface;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Http\Resources\Json\ResourceCollection;
 use Symfony\Component\HttpFoundation\Response;
 
 class RecipeController extends Controller
@@ -27,6 +31,14 @@ class RecipeController extends Controller
             "message" => __("resources.created"),
         ], Response::HTTP_OK);
     }
+
+    public function index(Request $request, RecipeGetterInterface $getter): ResourceCollection
+    {
+        $recipesWithPagination = $getter->getPaginated($request->query("title"), $request->query("per-page"));
+
+        return new RecipeCollection($recipesWithPagination);
+    }
+
 
     public function delete(Recipe $recipe, BasicDeleterInterface $deleter): JsonResponse
     {

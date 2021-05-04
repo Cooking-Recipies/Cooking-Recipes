@@ -43,6 +43,8 @@ $router->get("/tags", [TagController::class, "index"]);
 $router->get("/categories", [RecipeCategoryController::class, "index"]);
 
 $router->get("/recipes/{recipe}", [RecipeController::class, "show"]);
+$router->get("/recipes", [RecipeController::class, "index"]);
+
 
 $router->get("/profiles/{profile}", [ProfileController::class, "show"]);
 $router->get("/profiles", [ProfileController::class, "index"]);
