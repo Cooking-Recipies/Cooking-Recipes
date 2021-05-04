@@ -6,6 +6,7 @@ use App\Http\Controllers\ComponentController;
 use App\Http\Controllers\FollowController;
 use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RecipeCategoryController;
 use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\TagController;
 use Illuminate\Routing\Router;
@@ -35,10 +36,11 @@ $router->middleware("auth:sanctum")->group(function (Router $router): void {
     $router->post("/recipes", [RecipeController::class, "create"]);
     $router->delete("/recipes/{recipe}", [RecipeController::class, "delete"])
         ->middleware("can:haveAccess,recipe");
-
-    $router->get("/components", [ComponentController::class, "index"]);
-    $router->get("/tags", [TagController::class, "index"]);
 });
+
+$router->get("/components", [ComponentController::class, "index"]);
+$router->get("/tags", [TagController::class, "index"]);
+$router->get("/categories", [RecipeCategoryController::class, "index"]);
 
 $router->get("/recipes/{recipe}", [RecipeController::class, "show"]);
 

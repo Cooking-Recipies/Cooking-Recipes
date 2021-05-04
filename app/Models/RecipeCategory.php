@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class RecipeCategory extends Model
+class RecipeCategory extends ModelWithoutTimestamps
 {
     protected $table = "categories";
 

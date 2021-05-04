@@ -15,7 +15,7 @@ class CreateRecipesTable extends Migration
             $table->integer("number_of_people");
             $table->string("preparing_time");
             $table->string("title");
-            $table->string("instruction");
+            $table->text("instruction");
             $table->timestamps();
 
             $table->foreign("user_id")

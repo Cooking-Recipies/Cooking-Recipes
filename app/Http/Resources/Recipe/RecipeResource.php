@@ -9,6 +9,7 @@ class RecipeResource extends JsonResource
     public function toArray($request): array
     {
         return [
+            "user_profile_id" => $this->user->id,
             "title" => $this->title,
             "category" => $this->category->name,
             "number_of_people" => $this->number_of_people,
