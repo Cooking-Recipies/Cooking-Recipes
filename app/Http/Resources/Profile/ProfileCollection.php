@@ -6,11 +6,10 @@ use App\Http\Resources\PaginatedCollection;
 
 class ProfileCollection extends PaginatedCollection
 {
-    public function toArray($request)
+    public function toArray($request): array
     {
         return [
             "data" => ProfileResource::collection($this->collection),
-            "pagination" => $this->getPaginationLinks($request),
         ];
     }
 }

@@ -2,7 +2,7 @@
 
 namespace App\Services\Profile\Getter;
 
-use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
 interface ProfileGetterInterface
 {

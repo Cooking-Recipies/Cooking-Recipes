@@ -6,33 +6,23 @@ use Illuminate\Support\Facades\Schema;
 
 class Likers extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
-        Schema::create('likers', function (Blueprint $table) {
-            $table->increments('id');
+        Schema::create("likers", function (Blueprint $table) {
+            $table->increments("id");
 
-            $table->integer('likeable_id');
-            $table->string('likeable_type');
+            $table->integer("likeable_id");
+            $table->string("likeable_type");
 
-            $table->integer('liker_id')->nullable();
-            $table->string('liker_type')->nullable();
+            $table->integer("liker_id")->nullable();
+            $table->string("liker_type")->nullable();
 
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
-        Schema::dropIfExists('likers');
+        Schema::dropIfExists("likers");
     }
 }

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Services\Follow\Getter;
 
 use App\Models\User;
-use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
 interface FollowGetterInterface
 {

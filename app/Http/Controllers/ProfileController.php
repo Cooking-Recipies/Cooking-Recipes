@@ -28,9 +28,9 @@ class ProfileController extends Controller
 
     public function index(Request $request, ProfileGetterInterface $getter): ResourceCollection
     {
-        $profiles = $getter->getPaginated($request->query("name"), $request->query("per-page"));
+        $profilesWithPagination = $getter->getPaginated($request->query("name"), $request->query("per-page"));
 
-        return new ProfileCollection($profiles);
+        return new ProfileCollection($profilesWithPagination);
     }
 
     public function update(UpdateProfileRequest $request, BasicUpdaterInterface $updater): JsonResponse

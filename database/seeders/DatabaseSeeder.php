@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Recipe;
+use App\Models\RecipeCategory;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Rennokki\Befriended\Traits\Follow;
@@ -15,8 +17,22 @@ class DatabaseSeeder extends Seeder
             $this->call([
                 UsersSeeder::class,
                 ProfilesSeeder::class,
+                FollowSeeder::class,
             ]);
         }
-        $this->call(FollowSeeder::class);
+
+        if(RecipeCategory::query()->get()->isEmpty())
+        {
+            $this->call(CategoriesSeeder::class);
+        }
+
+        if(Recipe::query()->get()->isEmpty())
+        {
+            $this->call([
+                ComponentsSeeder::class,
+                TagsSeeder::class,
+                RecipeSeeder::class,
+            ]);
+        }
     }
 }
