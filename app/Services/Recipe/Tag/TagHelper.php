@@ -3,18 +3,19 @@
 namespace App\Services\Recipe\Tag;
 
 use App\Models\Tag;
+use Illuminate\Database\Eloquent\Model;
 
 class TagHelper
 {
-    public function getTagId(string $name): int
+    public function getOrCreateTag(string $name): Model
     {
         $tag = Tag::query()->where("name", strtolower($name))->first();
         if ($tag === null){
             return Tag::query()->create([
                 "name" => strtolower($name)
-            ])->id;
+            ]);
         }
 
-        return $tag->id;
+        return $tag;
     }
 }

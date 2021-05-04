@@ -6,11 +6,10 @@ use App\Http\Resources\PaginatedCollection;
 
 class PhotoCollection extends PaginatedCollection
 {
-    public function toArray($request)
+    public function toArray($request): array
     {
         return [
             "data" => PhotoResource::collection($this->collection),
-            "pagination" => $this->getPaginationLinks($request),
         ];
     }
 }

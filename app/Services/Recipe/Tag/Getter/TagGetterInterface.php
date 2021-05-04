@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Services\Profile\Getter;
+namespace App\Services\Recipe\Tag\Getter;
 
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
-interface ProfileGetterInterface
+interface TagGetterInterface
 {
     public function getPaginated(?string $name, ?string $perPage): LengthAwarePaginator;
 }

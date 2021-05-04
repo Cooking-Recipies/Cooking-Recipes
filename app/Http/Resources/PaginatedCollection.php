@@ -13,14 +13,16 @@ class PaginatedCollection extends ResourceCollection
         $response->setContent(json_encode($jsonResponse));
     }
 
-    protected function getPaginationLinks($request): array
+    public function with($request): array
     {
         return [
-            "total" => $this->total(),
-            "count" => $this->count(),
-            "per_page" => $this->perPage(),
-            "current_page" => $this->currentPage(),
-            "total_pages" => $this->lastPage(),
+            "pagination" => [
+                "total" => $this->total(),
+                "count" => $this->count(),
+                "per_page" => $this->perPage(),
+                "current_page" => $this->currentPage(),
+                "total_pages" => $this->lastPage(),
+            ],
         ];
     }
 }

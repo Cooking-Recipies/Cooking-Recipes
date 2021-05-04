@@ -1,15 +1,16 @@
 <?php
 
-namespace App\Services\Profile\Getter;
+namespace App\Services\Recipe\Component\Getter;
 
+use App\Models\Component;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
-use App\Models\Profile;
 
-class ProfileGetter implements ProfileGetterInterface
+class ComponentGetter implements ComponentGetterInterface
 {
     public function getPaginated(?string $name, ?string $perPage): LengthAwarePaginator
     {
-        return Profile::query()
+        return Component::query()
+            ->select("name")
             ->where("name", "like", "%{$name}%")
             ->paginate($perPage);
     }

@@ -1,16 +1,17 @@
 <?php
 
-namespace App\Services\Profile\Getter;
+namespace App\Services\Recipe\Tag\Getter;
 
+use App\Models\Tag;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
-use App\Models\Profile;
 
-class ProfileGetter implements ProfileGetterInterface
+class TagGetter implements TagGetterInterface
 {
     public function getPaginated(?string $name, ?string $perPage): LengthAwarePaginator
     {
-        return Profile::query()
+        return Tag::query()
             ->where("name", "like", "%{$name}%")
+            ->select("name")
             ->paginate($perPage);
     }
 }

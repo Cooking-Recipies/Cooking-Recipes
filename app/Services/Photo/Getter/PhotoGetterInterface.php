@@ -3,7 +3,7 @@
 namespace App\Services\Photo\Getter;
 
 use App\Models\User;
-use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
 interface PhotoGetterInterface
 {
