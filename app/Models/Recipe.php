@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -22,6 +23,31 @@ class Recipe extends Model implements UserResource
         "instruction",
     ];
 
+    public function scopeByTag(Builder $query, string $name): Builder
+    {
+        return $query->whereHas("tagOnRecipe", function (Builder $query) use ($name): void {
+            $query->whereHas("tag", function (Builder $query) use ($name): void {
+                $query->where("name","like","%{$name}%");
+            });
+        });
+    }
+
+    public function scopeByComponent(Builder $query, string $name): Builder
+    {
+        return $query->whereHas("componentOnRecipe", function (Builder $query) use ($name): void {
+            $query->whereHas("component", function (Builder $query) use ($name): void {
+                $query->where("name","like","%{$name}%");
+            });
+        });
+    }
+
+    public function scopeByCategory(Builder $query, string $name): Builder
+    {
+        return $query->whereHas("category", function (Builder $query) use ($name): void {
+            $query->where("name","like","%{$name}%");
+        });
+    }
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
@@ -29,7 +55,7 @@ class Recipe extends Model implements UserResource
 
     public function category(): BelongsTo
     {
-        return $this->belongsTo(RecipeCategory::class);
+        return $this->belongsTo(Category::class);
     }
 
     public function componentOnRecipe(): HasMany

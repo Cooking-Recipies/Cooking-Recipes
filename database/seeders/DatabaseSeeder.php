@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Recipe;
-use App\Models\RecipeCategory;
+use App\Models\Category;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Rennokki\Befriended\Traits\Follow;
@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-        if(RecipeCategory::query()->get()->isEmpty())
+        if(Category::query()->get()->isEmpty())
         {
             $this->call(CategoriesSeeder::class);
         }
