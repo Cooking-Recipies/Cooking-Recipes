@@ -48,7 +48,9 @@ $router->get("/components", [ComponentController::class, "index"]);
 $router->get("/tags", [TagController::class, "index"]);
 $router->get("/categories", [RecipeCategoryController::class, "index"]);
 
-$router->get("/recipes/{recipe}", [RecipeController::class, "show"]);
+$router->get("/recipes/{recipe}", [RecipeController::class, "show"])
+    ->middleware("optionalAuth");
+
 $router->get("/recipes", [RecipeController::class, "index"]);
 
 
