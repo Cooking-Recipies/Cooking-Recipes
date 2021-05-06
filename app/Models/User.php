@@ -9,15 +9,18 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Rennokki\Befriended\Contracts\Following;
+use Rennokki\Befriended\Contracts\Liker;
+use Rennokki\Befriended\Traits\CanLike;
 use Rennokki\Befriended\Traits\Follow;
 
 
-class User extends Authenticatable implements Following
+class User extends Authenticatable implements Following, Liker
 {
     use HasFactory;
     use Notifiable;
     use HasApiTokens;
     use Follow;
+    use CanLike;
 
     protected $fillable = [
         "name",

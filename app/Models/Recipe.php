@@ -7,10 +7,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Rennokki\Befriended\Contracts\Likeable;
+use Rennokki\Befriended\Traits\CanBeLiked;
 
-class Recipe extends Model implements UserResource
+class Recipe extends Model implements UserResource, Likeable
 {
     use HasFactory;
+    use CanBeLiked;
 
     protected $table = "recipes";
 

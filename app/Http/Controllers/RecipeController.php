@@ -18,9 +18,9 @@ use Symfony\Component\HttpFoundation\Response;
 class RecipeController extends Controller
 {
 
-    public function show(Recipe $recipe): JsonResource
+    public function show(Recipe $recipe, Request $request): JsonResource
     {
-        return new RecipeResource($recipe);
+        return new RecipeResource($recipe, $request->user());
     }
 
     public function create(RecipeRequest $request, RecipeCreatorInterface $creator): JsonResponse

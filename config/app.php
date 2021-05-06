@@ -1,6 +1,7 @@
 <?php
 
 return [
+
     'name' => env('APP_NAME', 'Laravel'),
 
     'env' => env('APP_ENV', 'production'),
@@ -58,6 +59,7 @@ return [
         App\Providers\AccountServiceProvider::class,
         App\Providers\FollowServiceProvider::class,
         App\Providers\RecipeServiceProvider::class,
+        App\Providers\LikeServiceProvider::class,
 
     ],
 
