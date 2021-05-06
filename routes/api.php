@@ -4,6 +4,7 @@ use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\ComponentController;
 use App\Http\Controllers\FollowController;
+use App\Http\Controllers\LikeController;
 use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RecipeCategoryController;
@@ -36,6 +37,11 @@ $router->middleware("auth:sanctum")->group(function (Router $router): void {
     $router->post("/recipes", [RecipeController::class, "create"]);
     $router->delete("/recipes/{recipe}", [RecipeController::class, "delete"])
         ->middleware("can:haveAccess,recipe");
+
+
+    $router->post("/recipes/{recipe}/favorites", [LikeController::class, "create"]);
+    $router->delete("/recipes/{recipe}/favorites", [LikeController::class, "delete"]);
+    $router->get("/users/me/recipes/favorites", [LikeController::class, "index"]);
 });
 
 $router->get("/components", [ComponentController::class, "index"]);

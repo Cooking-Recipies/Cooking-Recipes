@@ -58,6 +58,7 @@ return [
         App\Providers\AccountServiceProvider::class,
         App\Providers\FollowServiceProvider::class,
         App\Providers\RecipeServiceProvider::class,
+        App\Providers\LikeServiceProvider::class,
 
     ],
 

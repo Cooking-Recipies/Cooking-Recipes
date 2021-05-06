@@ -6,7 +6,6 @@ use App\Models\Recipe;
 use App\Models\Category;
 use App\Models\User;
 use Illuminate\Database\Seeder;
-use Rennokki\Befriended\Traits\Follow;
 
 class DatabaseSeeder extends Seeder
 {
@@ -20,6 +19,11 @@ class DatabaseSeeder extends Seeder
                 FollowSeeder::class,
             ]);
         }
+
+        $this->call([
+            FollowSeeder::class,
+            LikesSeeder::class,
+        ]);
 
         if(Category::query()->get()->isEmpty())
         {
