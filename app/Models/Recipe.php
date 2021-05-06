@@ -75,4 +75,9 @@ class Recipe extends Model implements UserResource, Likeable
     {
         return $this->hasMany(TagOnRecipe::class);
     }
+
+    public function rate(): HasMany
+    {
+        return $this->hasMany(Rate::class);
+    }
 }
