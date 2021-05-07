@@ -21,11 +21,6 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-        $this->call([
-          //  FollowSeeder::class,
-           // LikesSeeder::class,
-        ]);
-
         if(Category::query()->get()->isEmpty())
         {
             $this->call(CategoriesSeeder::class);
@@ -37,14 +32,15 @@ class DatabaseSeeder extends Seeder
                 ComponentsSeeder::class,
                 TagsSeeder::class,
                 RecipeSeeder::class,
+                LikesSeeder::class,
             ]);
         }
 
-      //  if(Rate::query()->get()->isEmpty())
-       // {
+        if(Rate::query()->get()->isEmpty())
+        {
             $this->call([
                 RatesSeeder::class,
             ]);
-       // }
+        }
     }
 }
