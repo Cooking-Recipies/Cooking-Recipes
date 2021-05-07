@@ -2,24 +2,16 @@
 
 namespace App\Http\Resources\Recipe;
 
-use App\Models\Recipe;
-use App\Models\User;
-use Illuminate\Http\Resources\Json\JsonResource;
+use App\Http\Resources\LikeableResource;
+use App\Http\Resources\Recipe\Properties\ComponentOnRecipeResource;
+use App\Http\Resources\Recipe\Properties\PhotoOnRecipeResource;
+use App\Http\Resources\Recipe\Properties\TagOnRecipeResource;
 
-class RecipeResource extends JsonResource
+class RecipeResource extends LikeableResource
 {
-    private ?User $loggedUser;
-
-    public function __construct(Recipe $resource, User $loggedUser = null)
-    {
-        parent::__construct($resource);
-        $this->loggedUser = $loggedUser;
-    }
-
     public function toArray($request): array
     {
         return [
-            "logged_user_favorite" => $this->isResourceLikedByLoggedUser(),
             "user_profile_id" => $this->user->id,
             "title" => $this->title,
             "category" => $this->category->name,
@@ -30,10 +22,5 @@ class RecipeResource extends JsonResource
             "tags" => TagOnRecipeResource::collection($this->tagOnRecipe()->get()),
             "photos" => PhotoOnRecipeResource::collection($this->photoOnRecipe()->get())
         ];
-    }
-
-    private function isResourceLikedByLoggedUser(): bool
-    {
-        return $this->loggedUser !== null ? $this->loggedUser->isLiking($this->resource) : false;
     }
 }

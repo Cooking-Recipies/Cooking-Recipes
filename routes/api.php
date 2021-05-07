@@ -4,7 +4,9 @@ use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\ComponentController;
 use App\Http\Controllers\FollowController;
-use App\Http\Controllers\LikeController;
+use App\Http\Controllers\RateController;
+use App\Http\Controllers\RateLikeController;
+use App\Http\Controllers\RecipeLikeController;
 use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RecipeCategoryController;
@@ -39,9 +41,20 @@ $router->middleware("auth:sanctum")->group(function (Router $router): void {
         ->middleware("can:haveAccess,recipe");
 
 
-    $router->post("/recipes/{recipe}/favorites", [LikeController::class, "create"]);
-    $router->delete("/recipes/{recipe}/favorites", [LikeController::class, "delete"]);
-    $router->get("/users/me/recipes/favorites", [LikeController::class, "index"]);
+    $router->post("/recipes/{recipe}/likes", [RecipeLikeController::class, "create"]);
+    $router->delete("/recipes/{recipe}/likes", [RecipeLikeController::class, "delete"]);
+    $router->get("/users/me/recipes/likes", [RecipeLikeController::class, "index"]);
+
+
+    $router->post("/recipes/{recipe}/rates", [RateController::class, "create"]);
+    $router->delete("/rates/{rate}", [RateController::class, "delete"])
+        ->middleware("can:haveAccess,rate");
+    $router->put("/rates/{rate}", [RateController::class, "update"])
+        ->middleware("can:haveAccess,rate");
+
+
+    $router->post("/rates/{rate}/likes", [RateLikeController::class, "create"]);
+    $router->delete("/rates/{rate}/likes", [RateLikeController::class, "delete"]);
 });
 
 $router->get("/components", [ComponentController::class, "index"]);
@@ -50,9 +63,10 @@ $router->get("/categories", [RecipeCategoryController::class, "index"]);
 
 $router->get("/recipes/{recipe}", [RecipeController::class, "show"])
     ->middleware("optionalAuth");
-
 $router->get("/recipes", [RecipeController::class, "index"]);
 
+$router->get("/recipes/{recipe}/rates", [RateController::class, "index"])
+    ->middleware("optionalAuth");
 
 $router->get("/profiles/{profile}", [ProfileController::class, "show"]);
 $router->get("/profiles", [ProfileController::class, "index"]);

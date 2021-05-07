@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\Like\LikeCollection;
+use App\Http\Resources\Recipe\Liked\ShortRecipeCollection;
 use App\Models\Recipe;
 use App\Services\Like\Interfaces\LikeCreator;
 use App\Services\Like\Interfaces\LikeDeleter;
@@ -12,14 +12,14 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 use Symfony\Component\HttpFoundation\Response;
 
-class LikeController extends Controller
+class RecipeLikeController extends Controller
 {
     public function index(Request $request, LikeGetter $getter): ResourceCollection
     {
         $likesWithPagination = $getter->getPaginated(
             $request->user(), $request->query("per-page"), Recipe::class);
 
-        return new LikeCollection($likesWithPagination);
+        return new ShortRecipeCollection($likesWithPagination);
     }
 
     public function create(Recipe $recipe, Request $request, LikeCreator $creator): JsonResponse

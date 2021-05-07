@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class PaginatedCollection extends ResourceCollection
+abstract class PaginatedCollection extends ResourceCollection
 {
     public function withResponse($request, $response): void
     {
