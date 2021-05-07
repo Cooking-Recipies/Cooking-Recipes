@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Rate;
 use App\Models\Recipe;
 use App\Models\Category;
 use App\Models\User;
@@ -21,8 +22,8 @@ class DatabaseSeeder extends Seeder
         }
 
         $this->call([
-            FollowSeeder::class,
-            LikesSeeder::class,
+          //  FollowSeeder::class,
+           // LikesSeeder::class,
         ]);
 
         if(Category::query()->get()->isEmpty())
@@ -38,5 +39,12 @@ class DatabaseSeeder extends Seeder
                 RecipeSeeder::class,
             ]);
         }
+
+      //  if(Rate::query()->get()->isEmpty())
+       // {
+            $this->call([
+                RatesSeeder::class,
+            ]);
+       // }
     }
 }
