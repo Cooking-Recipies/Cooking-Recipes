@@ -63,7 +63,9 @@ $router->get("/categories", [RecipeCategoryController::class, "index"]);
 
 $router->get("/recipes/{recipe}", [RecipeController::class, "show"])
     ->middleware("optionalAuth");
-$router->get("/recipes", [RecipeController::class, "index"]);
+$router->get("/recipes", [RecipeController::class, "index"])
+    ->middleware("optionalAuth");
+
 
 $router->get("/recipes/{recipe}/rates", [RateController::class, "index"])
     ->middleware("optionalAuth");

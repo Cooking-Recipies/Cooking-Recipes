@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Resources\Recipe\ShortVersion;
+namespace App\Http\Resources\Recipe\ShortVersion\Res;
 
 use App\Http\Resources\LikeableResource;
 use App\Http\Resources\Recipe\Properties\PhotoOnRecipeResource;
