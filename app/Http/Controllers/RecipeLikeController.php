@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\Recipe\Liked\ShortRecipeCollection;
+use App\Http\Resources\Recipe\ShortVersion\ShortRecipeCollection;
 use App\Models\Recipe;
 use App\Services\Like\Interfaces\LikeCreator;
 use App\Services\Like\Interfaces\LikeDeleter;

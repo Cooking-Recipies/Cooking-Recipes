@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\RecipeRequest;
-use App\Http\Resources\Recipe\ShortVersion\Res\ShortRecipeCollection;
+use App\Http\Resources\Recipe\ShortVersion\ShortRecipeCollection;
 use App\Http\Resources\Recipe\RecipeResource;
 use App\Models\Recipe;
 use App\Services\Basic\Deleter\BasicDeleterInterface;
