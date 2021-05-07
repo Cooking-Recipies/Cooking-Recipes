@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\RecipeRequest;
-use App\Http\Resources\Recipe\RecipeCollection;
+use App\Http\Resources\Recipe\ShortVersion\Res\ShortRecipeCollection;
 use App\Http\Resources\Recipe\RecipeResource;
 use App\Models\Recipe;
 use App\Services\Basic\Deleter\BasicDeleterInterface;
@@ -38,7 +38,7 @@ class RecipeController extends Controller
             $request->query("title"), $request->query("category"), $request->query("tag"),
             $request->query("component"), $request->query("per-page"));
 
-        return new RecipeCollection($recipesWithPagination);
+        return new ShortRecipeCollection($recipesWithPagination);
     }
 
 

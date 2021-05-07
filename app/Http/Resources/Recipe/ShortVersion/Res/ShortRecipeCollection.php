@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Resources\Recipe\Liked;
+namespace App\Http\Resources\Recipe\ShortVersion\Res;
 
 use App\Http\Resources\PaginatedCollection;
+use App\Http\Resources\Recipe\ShortVersion\ShortRecipeResource;
 
 class ShortRecipeCollection extends PaginatedCollection
 {
