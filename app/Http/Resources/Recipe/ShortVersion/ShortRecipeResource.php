@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Resources\Recipe\Liked;
+namespace App\Http\Resources\Recipe\ShortVersion;
 
-use Illuminate\Http\Resources\Json\JsonResource;
+use App\Http\Resources\LikeableResource;
+use App\Http\Resources\Recipe\Properties\PhotoOnRecipeResource;
+use App\Http\Resources\Recipe\Properties\TagOnRecipeResource;
 
-class ShortRecipeResource extends JsonResource
+class ShortRecipeResource extends LikeableResource
 {
     public function toArray($request): array
     {
@@ -13,6 +15,9 @@ class ShortRecipeResource extends JsonResource
             "recipe_id" => $this->id,
             "title" => $this->title,
             "category" => $this->category->name,
+            "tags" => TagOnRecipeResource::collection($this->tagOnRecipe()->get()),
+            "photos" => PhotoOnRecipeResource::collection($this->photoOnRecipe()->get()),
+            "likes" => $this->with($request),
         ];
     }
 }

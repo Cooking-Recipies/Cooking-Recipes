@@ -8,9 +8,9 @@ use Rennokki\Befriended\Contracts\Likeable;
 
 abstract class LikeableResource extends JsonResource
 {
-    protected ?User $loggedUser;
+    protected  $loggedUser;
 
-    public function __construct(Likeable $resource, User $loggedUser = null)
+    public function __construct(Likeable $resource, $loggedUser = null)
     {
         parent::__construct($resource);
         $this->loggedUser = $loggedUser;
