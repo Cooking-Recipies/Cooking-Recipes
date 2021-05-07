@@ -60,6 +60,8 @@ return [
         App\Providers\FollowServiceProvider::class,
         App\Providers\RecipeServiceProvider::class,
         App\Providers\LikeServiceProvider::class,
+        App\Providers\RateServiceProvider::class,
+
 
     ],
 

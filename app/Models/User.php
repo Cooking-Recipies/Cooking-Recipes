@@ -51,4 +51,9 @@ class User extends Authenticatable implements Following, Liker
     {
         return $this->hasOne(Profile::class);
     }
+
+    public function rate(): HasMany
+    {
+        return $this->hasMany(Rate::class);
+    }
 }

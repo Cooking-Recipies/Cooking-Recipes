@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Resources\Like;
+namespace App\Http\Resources\Recipe\Liked;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class LikeResource extends JsonResource
+class ShortRecipeResource extends JsonResource
 {
     public function toArray($request): array
     {

@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Photo;
+use App\Models\Rate;
 use App\Models\Recipe;
 use App\Policies\UserResourcePolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
@@ -16,6 +17,7 @@ class AuthServiceProvider extends ServiceProvider
     protected $policies = [
          Photo::class => UserResourcePolicy::class,
          Recipe::class => UserResourcePolicy::class,
+         Rate::class => UserResourcePolicy::class,
     ];
 
     public function register(): void
