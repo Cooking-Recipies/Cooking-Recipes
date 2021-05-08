@@ -6,6 +6,7 @@ use App\Http\Requests\RecipeRequest;
 use App\Http\Resources\Recipe\ShortVersion\ShortRecipeCollection;
 use App\Http\Resources\Recipe\RecipeResource;
 use App\Models\Recipe;
+use App\Models\User;
 use App\Services\Basic\Deleter\BasicDeleterInterface;
 use App\Services\Recipe\Creator\RecipeCreatorInterface;
 use App\Services\Recipe\Getter\RecipeGetterInterface;
@@ -32,11 +33,25 @@ class RecipeController extends Controller
         ], Response::HTTP_OK);
     }
 
-    public function index(Request $request, RecipeGetterInterface $getter): ResourceCollection
+    public function searchIndex(Request $request, RecipeGetterInterface $getter): ResourceCollection
     {
-        $recipesWithPagination = $getter->getPaginated(
+        $recipesWithPagination = $getter->getPaginatedBySearchOptions(
             $request->query("title"), $request->query("category"), $request->query("tag"),
             $request->query("component"), $request->query("per-page"));
+
+        return new ShortRecipeCollection($recipesWithPagination);
+    }
+
+    public function userIndex(User $user, Request $request, RecipeGetterInterface $getter): ResourceCollection
+    {
+        $recipesWithPagination = $getter->getPaginatedByUser($user, $request->query("per-page"));
+
+        return new ShortRecipeCollection($recipesWithPagination);
+    }
+
+    public function meIndex(Request $request, RecipeGetterInterface $getter): ResourceCollection
+    {
+        $recipesWithPagination = $getter->getPaginatedByUser($request->user(), $request->query("per-page"));
 
         return new ShortRecipeCollection($recipesWithPagination);
     }
