@@ -17,7 +17,7 @@ class RateCollection extends LikeablePaginatedCollection
         }
 
         return [
-            "data" => [$collection],
+            "data" => $collection,
         ];
     }
 }

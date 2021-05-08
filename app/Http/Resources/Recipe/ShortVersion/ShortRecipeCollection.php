@@ -16,7 +16,7 @@ class ShortRecipeCollection extends LikeablePaginatedCollection
         }
 
         return [
-            "data" => [$collection],
+            "data" => $collection,
         ];
     }
 }

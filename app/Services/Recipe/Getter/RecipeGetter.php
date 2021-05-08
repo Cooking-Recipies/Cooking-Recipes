@@ -3,12 +3,13 @@
 namespace App\Services\Recipe\Getter;
 
 use App\Models\Recipe;
+use App\Models\User;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
 class RecipeGetter implements RecipeGetterInterface
 {
 
-    public function getPaginated(
+    public function getPaginatedBySearchOptions(
         ?string $title,  ?string $category, ?string $tag, ?string $component, ?string $perPage): LengthAwarePaginator
     {
         $recipesBuilder =  Recipe::query()->where("title", "like", "%{$title}%");
@@ -24,5 +25,10 @@ class RecipeGetter implements RecipeGetterInterface
         }
 
           return $recipesBuilder->paginate($perPage);
+    }
+
+    public function getPaginatedByUser(User $user, ?string $perPage): LengthAwarePaginator
+    {
+        return $user->recipes()->paginate($perPage);
     }
 }
