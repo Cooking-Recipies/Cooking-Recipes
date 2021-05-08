@@ -65,9 +65,9 @@ $router->get("/recipes/{recipe}", [RecipeController::class, "show"])
     ->middleware("optionalAuth");
 $router->get("/recipes", [RecipeController::class, "searchIndex"])
     ->middleware("optionalAuth");
-$router->get("/users/me/recipes", [RecipeController::class, "meIndex"])
+$router->get("/users/{user}/recipes", [RecipeController::class, "userIndex"])
     ->middleware("optionalAuth");
-$router->get("/users/{user}/recipes", [RecipeController::class, "meIndex"])
+$router->get("/users/me/recipes", [RecipeController::class, "meIndex"])
     ->middleware("optionalAuth");
 
 
