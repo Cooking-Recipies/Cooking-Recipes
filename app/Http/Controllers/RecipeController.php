@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\RecipeRequest;
+use App\Http\Requests\UpdateRecipeRequest;
 use App\Http\Resources\Recipe\ShortVersion\ShortRecipeCollection;
 use App\Http\Resources\Recipe\RecipeResource;
 use App\Models\Recipe;
@@ -10,6 +11,7 @@ use App\Models\User;
 use App\Services\Basic\Deleter\BasicDeleterInterface;
 use App\Services\Recipe\Creator\RecipeCreatorInterface;
 use App\Services\Recipe\Getter\RecipeGetterInterface;
+use App\Services\Recipe\Updater\RecipeUpdaterInterface;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -30,6 +32,16 @@ class RecipeController extends Controller
 
         return response()->json([
             "message" => __("resources.created"),
+        ], Response::HTTP_OK);
+    }
+
+    public function update(Recipe $recipe, UpdateRecipeRequest $request, RecipeUpdaterInterface $updater): JsonResponse
+    {
+        $recipe = $updater->update($recipe, $request->validated());
+
+        return response()->json([
+            "message" => __("resources.updated"),
+            "data" => new RecipeResource($recipe),
         ], Response::HTTP_OK);
     }
 

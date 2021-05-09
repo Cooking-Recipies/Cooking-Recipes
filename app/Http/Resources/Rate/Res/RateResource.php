@@ -13,6 +13,7 @@ class RateResource extends LikeableResource
             "rate" => $this->rate,
             "comment" => $this->comment,
             "edited" => $this->created_at->toDateTimeString() !== $this->updated_at->toDateTimeString(),
+            "crated_by_logged_user" => $this->user->is($this->loggedUser),
             "likes" => $this->with($request),
         ];
     }
