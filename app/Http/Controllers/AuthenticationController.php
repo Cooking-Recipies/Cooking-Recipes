@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
+use App\Models\User;
 use App\Services\Authentication\UserLoggerInterface;
 use App\Services\Authentication\UserRegisterInterface;
 use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Http\Request;
+
 
 class AuthenticationController extends Controller
 {
@@ -26,6 +29,17 @@ class AuthenticationController extends Controller
 
         return response()->json([
             "message" => __("auth.success"),
+        ], Response::HTTP_OK);
+    }
+
+    public function logout(Request $request): JsonResponse
+    {
+        /** @var User $user */
+        $user = $request->user();
+        $user->tokens()->where("id", $user->currentAccessToken()->id)->delete();
+
+        return response()->json([
+            "message" => __("auth.logout_success"),
         ], Response::HTTP_OK);
     }
 }

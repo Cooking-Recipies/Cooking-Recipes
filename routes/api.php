@@ -16,13 +16,13 @@ use Illuminate\Routing\Router;
 
 $router = app(Router::class);
 
-/*authentication*/
-$router->post("/login", [AuthenticationController::class, "login"]);
-$router->post("/register", [AuthenticationController::class, "register"]);
-
-/*token required*/
-
+/*
+ * token required
+ */
 $router->middleware("auth:sanctum")->group(function (Router $router): void {
+
+    /*authentication*/
+    $router->post("/logout", [AuthenticationController::class, "logout"]);
 
     /*photos*/
     $router->post("/photos", [PhotoController::class, "create"]);
@@ -65,7 +65,13 @@ $router->middleware("auth:sanctum")->group(function (Router $router): void {
         ->middleware("can:haveAccess,rate");
 });
 
-/*token optional or not required*/
+/*
+ * token optional or not required
+ * /
+
+/*authentication*/
+$router->post("/login", [AuthenticationController::class, "login"]);
+$router->post("/register", [AuthenticationController::class, "register"]);
 
 /*recipes properties*/
 $router->get("/components", [ComponentController::class, "index"]);
