@@ -43,7 +43,7 @@ $router->middleware("auth:sanctum")->group(function (Router $router): void {
 
     $router->post("/recipes/{recipe}/likes", [RecipeLikeController::class, "create"]);
     $router->delete("/recipes/{recipe}/likes", [RecipeLikeController::class, "delete"]);
-    $router->get("/users/me/recipes/likes", [RecipeLikeController::class, "index"]);
+    $router->get("/users/me/likes/recipes", [RecipeLikeController::class, "index"]);
 
 
     $router->post("/recipes/{recipe}/rates", [RateController::class, "create"]);
