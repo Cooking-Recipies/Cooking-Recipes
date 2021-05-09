@@ -18,6 +18,7 @@ class RecipeResource extends LikeableResource
             "number_of_people" => $this->number_of_people,
             "preparing_time" => $this->preparing_time,
             "instruction" => $this->instruction,
+            "crated_by_logged_user" => $this->user->is($this->loggedUser),
             "components" => ComponentOnRecipeResource::collection($this->componentOnRecipe()->get()),
             "tags" => TagOnRecipeResource::collection($this->tagOnRecipe()->get()),
             "photos" => PhotoOnRecipeResource::collection($this->photoOnRecipe()->get())

@@ -39,6 +39,8 @@ $router->middleware("auth:sanctum")->group(function (Router $router): void {
     $router->post("/recipes", [RecipeController::class, "create"]);
     $router->delete("/recipes/{recipe}", [RecipeController::class, "delete"])
         ->middleware("can:haveAccess,recipe");
+    $router->get("/users/me/recipes", [RecipeController::class, "meIndex"]);
+
 
 
     $router->post("/recipes/{recipe}/likes", [RecipeLikeController::class, "create"]);
@@ -67,9 +69,6 @@ $router->get("/recipes", [RecipeController::class, "searchIndex"])
     ->middleware("optionalAuth");
 $router->get("/users/{user}/recipes", [RecipeController::class, "userIndex"])
     ->middleware("optionalAuth");
-$router->get("/users/me/recipes", [RecipeController::class, "meIndex"])
-    ->middleware("optionalAuth");
-
 
 
 
