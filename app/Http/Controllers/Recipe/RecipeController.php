@@ -9,7 +9,7 @@ use App\Http\Resources\Recipe\ShortVersion\ShortRecipeCollection;
 use App\Http\Resources\Recipe\RecipeResource;
 use App\Models\Recipe;
 use App\Models\User;
-use App\Services\Basic\Deleter\BasicDeleterInterface;
+use App\Services\Basic\Contracts\BasicDeleter;
 use App\Services\Recipe\Creator\RecipeCreatorInterface;
 use App\Services\Recipe\Getter\RecipeGetterInterface;
 use App\Services\Recipe\Updater\RecipeUpdaterInterface;
@@ -70,7 +70,7 @@ class RecipeController extends Controller
     }
 
 
-    public function delete(Recipe $recipe, BasicDeleterInterface $deleter): JsonResponse
+    public function delete(Recipe $recipe, BasicDeleter $deleter): JsonResponse
     {
         $deleter->delete($recipe);
 

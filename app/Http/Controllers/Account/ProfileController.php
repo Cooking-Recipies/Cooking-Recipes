@@ -7,7 +7,7 @@ use App\Http\Requests\UpdateProfileRequest;
 use App\Http\Resources\Profile\ProfileCollection;
 use App\Http\Resources\Profile\ProfileResource;
 use App\Models\Profile;
-use App\Services\Basic\Updater\BasicUpdaterInterface;
+use App\Services\Basic\Contracts\BasicUpdater;
 use App\Services\Profile\Getter\ProfileGetterInterface;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -34,7 +34,7 @@ class ProfileController extends Controller
         return new ProfileCollection($profilesWithPagination);
     }
 
-    public function update(UpdateProfileRequest $request, BasicUpdaterInterface $updater): JsonResponse
+    public function update(UpdateProfileRequest $request, BasicUpdater $updater): JsonResponse
     {
         $profile = $updater->update($request->user()->profile()->first(), $request->validated());
 

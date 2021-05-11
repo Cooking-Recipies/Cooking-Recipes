@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Services\Basic\Deleter;
+namespace App\Services\Basic\Contracts;
 
 use Illuminate\Database\Eloquent\Model;
 
-interface BasicDeleterInterface
+interface BasicDeleter
 {
     public function delete(Model $model): void;
 }

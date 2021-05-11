@@ -7,8 +7,8 @@ use App\Http\Requests\RateRequest;
 use App\Http\Resources\Rate\RateCollection;
 use App\Models\Rate;
 use App\Models\Recipe;
-use App\Services\Basic\Deleter\BasicDeleterInterface;
-use App\Services\Basic\Updater\BasicUpdaterInterface;
+use App\Services\Basic\Contracts\BasicDeleter;
+use App\Services\Basic\Contracts\BasicUpdater;
 use App\Services\Rate\Interfaces\RateCreatorInterface;
 use App\Services\Rate\Interfaces\RateGetterInterface;
 use Illuminate\Http\JsonResponse;
@@ -34,7 +34,7 @@ class RateController extends Controller
         ], Response::HTTP_OK);
     }
 
-    public function update(Rate $rate, RateRequest $request, BasicUpdaterInterface $updater): JsonResponse
+    public function update(Rate $rate, RateRequest $request, BasicUpdater $updater): JsonResponse
     {
         $updater->update($rate,$request->validated());
 
@@ -43,7 +43,7 @@ class RateController extends Controller
         ], Response::HTTP_OK);
     }
 
-    public function delete(Rate $rate, BasicDeleterInterface $deleter): JsonResponse
+    public function delete(Rate $rate, BasicDeleter $deleter): JsonResponse
     {
         $deleter->delete($rate);
 
