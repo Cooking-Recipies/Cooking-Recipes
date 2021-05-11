@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Recipe;
 
+use App\Http\Controllers\Controller;
 use App\Http\Resources\Recipe\ShortVersion\ShortRecipeCollection;
 use App\Models\Recipe;
 use App\Services\Like\Interfaces\LikeCreator;

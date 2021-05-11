@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Rate\Properties;
 
+use App\Http\Controllers\Controller;
 use App\Http\Resources\Category\RecipeCategoryResource;
 use App\Models\Category;
 use Illuminate\Http\Resources\Json\ResourceCollection;

@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Rate;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\RateRequest;
 use App\Http\Resources\Rate\RateCollection;
 use App\Models\Rate;

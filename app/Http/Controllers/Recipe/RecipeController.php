@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Recipe;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\RecipeRequest;
 use App\Http\Requests\UpdateRecipeRequest;
 use App\Http\Resources\Recipe\ShortVersion\ShortRecipeCollection;

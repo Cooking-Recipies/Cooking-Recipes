@@ -2,8 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Follow;
 
+use App\Http\Controllers\Controller;
 use App\Http\Resources\Follow\FollowCollection;
 use App\Models\User;
 use App\Services\Follow\Creator\FollowCreatorInterface;

@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Rate\Properties;
 
+use App\Http\Controllers\Controller;
 use App\Http\Resources\Name\NameCollection;
 use App\Services\Recipe\Component\Getter\ComponentGetterInterface;
 use Illuminate\Http\Request;

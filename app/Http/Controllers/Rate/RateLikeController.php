@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Rate;
 
+use App\Http\Controllers\Controller;
 use App\Models\Rate;
 use App\Services\Like\Interfaces\LikeCreator;
 use App\Services\Like\Interfaces\LikeDeleter;

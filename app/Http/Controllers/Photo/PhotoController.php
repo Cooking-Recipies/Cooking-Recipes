@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Photo;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\PhotoRequest;
 use App\Http\Resources\Photo\PhotoCollection;
 use App\Http\Resources\Photo\PhotoResource;
 use App\Models\Photo;
-use App\Models\User;
 use App\Services\Photo\Deleter\PhotoDeleterInterface;
 use App\Services\Photo\Getter\PhotoGetterInterface;
 use App\Services\Photo\Uploader\PhotoUploaderInterface;

@@ -2,8 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Account;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\ChangePasswordRequest;
 use App\Http\Requests\DeleteAccountRequest;
 use App\Services\Account\Deleter\AccountDeleterInterface;

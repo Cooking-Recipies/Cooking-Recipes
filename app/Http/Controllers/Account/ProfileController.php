@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Account;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdateProfileRequest;
 use App\Http\Resources\Profile\ProfileCollection;
 use App\Http\Resources\Profile\ProfileResource;
