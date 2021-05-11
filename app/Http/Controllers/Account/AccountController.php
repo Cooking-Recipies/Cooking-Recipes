@@ -7,23 +7,23 @@ namespace App\Http\Controllers\Account;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ChangePasswordRequest;
 use App\Http\Requests\DeleteAccountRequest;
-use App\Services\Account\Deleter\AccountDeleterInterface;
-use App\Services\Password\PasswordServiceInterface;
+use App\Services\Account\Contracts\AccountDeleter;
+use App\Services\Account\Contracts\PasswordUpdater;
 use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 
 class AccountController extends Controller
 {
-    public function delete(DeleteAccountRequest $request, AccountDeleterInterface $deleter): JsonResponse
+    public function delete(DeleteAccountRequest $request, AccountDeleter $deleter): JsonResponse
     {
-        $deleter->deleteAccount($request->input("password"), $request->user());
+        $deleter->delete($request->input("password"), $request->user());
 
         return response()->json([
             "message" => __("account.deleted"),
         ], Response::HTTP_OK);
     }
 
-    public function changePassword(ChangePasswordRequest $request, PasswordServiceInterface $service): JsonResponse
+    public function changePassword(ChangePasswordRequest $request, PasswordUpdater $service): JsonResponse
     {
         $service->changePassword($request->validated(), $request->user());
 

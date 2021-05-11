@@ -2,15 +2,16 @@
 
 declare(strict_types=1);
 
-namespace App\Services\Password;
+namespace App\Services\Account;
 
 use App\Models\User;
-use App\Services\Authentication\HasherProvider;
+use App\Services\Authentication\PasswordHelper;
+use App\Services\Account\Contracts\PasswordUpdater as Updater;
 use Dotenv\Exception\ValidationException;
 
-class PasswordService  implements PasswordServiceInterface
+class PasswordUpdater  implements Updater
 {
-    use HasherProvider;
+    use PasswordHelper;
 
     public function changePassword(array $data, User $user): void
     {

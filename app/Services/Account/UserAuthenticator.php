@@ -2,14 +2,16 @@
 
 declare(strict_types=1);
 
-namespace App\Services\Authentication;
+namespace App\Services\Account;
 
 use App\Models\User;
+use App\Services\Account\Contracts\UserAuthenticator as Authenticator;
+use App\Services\Authentication\PasswordHelper;
 use Illuminate\Auth\AuthenticationException;
 
-class UserLogger implements UserLoggerInterface
+class UserAuthenticator implements Authenticator
 {
-    use HasherProvider;
+    use PasswordHelper;
 
     public function login(array $credentials): string
     {
@@ -19,6 +21,11 @@ class UserLogger implements UserLoggerInterface
         }
 
         return $user->createToken($user->email)->plainTextToken;
+    }
+
+    public function logout(User $user): void
+    {
+        $user->tokens()->where("id", $user->currentAccessToken()->id)->delete();
     }
 
     private function getUser(string $email): ?User

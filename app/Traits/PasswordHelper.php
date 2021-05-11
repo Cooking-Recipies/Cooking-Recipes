@@ -7,7 +7,7 @@ namespace App\Services\Authentication;
 use App\Models\User;
 use Illuminate\Contracts\Hashing\Hasher;
 
-trait HasherProvider
+trait PasswordHelper
 {
     protected Hasher $hashes;
 

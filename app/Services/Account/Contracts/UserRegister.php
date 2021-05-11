@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Services\Authentication;
+namespace App\Services\Account\Contracts;
 
-interface UserRegisterInterface
+interface UserRegister
 {
     public function register(array $credentials);
 }

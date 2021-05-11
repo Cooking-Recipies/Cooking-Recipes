@@ -2,13 +2,15 @@
 
 declare(strict_types=1);
 
-namespace App\Services\Authentication;
+namespace App\Services\Account;
 
 use App\Models\User;
+use App\Services\Account\Contracts\UserRegister as Register;
+use App\Services\Authentication\PasswordHelper;
 
-class UserRegister implements UserRegisterInterface
+class UserRegister implements Register
 {
-    use HasherProvider;
+    use PasswordHelper;
 
     public function register(array $credentials): void
     {

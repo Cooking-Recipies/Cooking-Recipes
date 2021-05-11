@@ -2,19 +2,17 @@
 
 namespace App\Providers;
 
-use App\Services\Account\Deleter\AccountDeleter;
-use App\Services\Account\Deleter\AccountDeleterInterface;
-use App\Services\Password\PasswordService;
-use App\Services\Password\PasswordServiceInterface;
+use App\Services\Account\AccountDeleter;
+use App\Services\Account\Contracts\AccountDeleter as Deleter;
+use App\Services\Account\PasswordUpdater;
+use App\Services\Account\Contracts\PasswordUpdater as Updater;
 use Illuminate\Support\ServiceProvider;
-
 
 class AccountServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->app->bind(PasswordServiceInterface::class, PasswordService::class);
-        $this->app->bind(AccountDeleterInterface::class, AccountDeleter::class);
-
+        $this->app->bind(Updater::class, PasswordUpdater::class);
+        $this->app->bind(Deleter::class, AccountDeleter::class);
     }
 }
