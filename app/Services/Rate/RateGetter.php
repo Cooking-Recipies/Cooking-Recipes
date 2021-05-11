@@ -3,10 +3,10 @@
 namespace App\Services\Rate;
 
 use App\Models\Recipe;
-use App\Services\Rate\Interfaces\RateGetterInterface;
+use App\Services\Rate\Contracts\RateGetter as Getter;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
-class RateGetter implements RateGetterInterface
+class RateGetter implements Getter
 {
     public function getPaginated(Recipe $recipe, ?string $perPage): LengthAwarePaginator
     {

@@ -2,9 +2,9 @@
 
 namespace App\Providers;
 
-use App\Services\Like\Interfaces\LikeCreator;
-use App\Services\Like\Interfaces\LikeDeleter;
-use App\Services\Like\Interfaces\LikeGetter;
+use App\Services\Like\Contracts\LikeCreator;
+use App\Services\Like\Contracts\LikeDeleter;
+use App\Services\Like\Contracts\LikeGetter;
 use App\Services\Like\ModelLikeCreator;
 use App\Services\Like\ModelLikeDeleter;
 use App\Services\Like\ModelLikeGetter;

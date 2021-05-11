@@ -2,20 +2,20 @@
 
 namespace App\Providers;
 
-use App\Services\Follow\Creator\FollowCreatorInterface;
-use App\Services\Follow\Creator\FollowCreator;
-use App\Services\Follow\Deleter\FollowDeleter;
-use App\Services\Follow\Deleter\FollowDeleterInterface;
-use App\Services\Follow\Getter\FollowGetter;
-use App\Services\Follow\Getter\FollowGetterInterface;
+use App\Services\Follow\Contracts\FollowCreator;
+use App\Services\Follow\ModelFollowCreator;
+use App\Services\Follow\ModelFollowDeleter;
+use App\Services\Follow\Contracts\FollowDeleter;
+use App\Services\Follow\ModelFollowGetter;
+use App\Services\Follow\Contracts\FollowGetter;
 use Illuminate\Support\ServiceProvider;
 
 class FollowServiceProvider extends ServiceProvider
 {
     public function register()
     {
-        $this->app->bind(FollowDeleterInterface::class, FollowDeleter::class);
-        $this->app->bind(FollowCreatorInterface::class, FollowCreator::class);
-        $this->app->bind(FollowGetterInterface::class, FollowGetter::class);
+        $this->app->bind(FollowDeleter::class, FollowDeleter::class);
+        $this->app->bind(ModelFollowCreator::class, ModelFollowCreator::class);
+        $this->app->bind(ModelFollowGetter::class, ModelFollowGetter::class);
     }
 }

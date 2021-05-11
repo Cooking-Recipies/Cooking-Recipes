@@ -1,17 +1,17 @@
 <?php
 
-use App\Http\Controllers\AccountController;
-use App\Http\Controllers\AuthenticationController;
-use App\Http\Controllers\ComponentController;
-use App\Http\Controllers\FollowController;
-use App\Http\Controllers\RateController;
-use App\Http\Controllers\RateLikeController;
-use App\Http\Controllers\RecipeLikeController;
-use App\Http\Controllers\PhotoController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\RecipeCategoryController;
-use App\Http\Controllers\RecipeController;
-use App\Http\Controllers\TagController;
+use App\Http\Controllers\Account\AccountController;
+use App\Http\Controllers\Account\AuthenticationController;
+use App\Http\Controllers\Account\ProfileController;
+use App\Http\Controllers\Follow\FollowController;
+use App\Http\Controllers\Photo\PhotoController;
+use App\Http\Controllers\Rate\Properties\ComponentController;
+use App\Http\Controllers\Rate\Properties\RecipeCategoryController;
+use App\Http\Controllers\Rate\Properties\TagController;
+use App\Http\Controllers\Rate\RateController;
+use App\Http\Controllers\Rate\RateLikeController;
+use App\Http\Controllers\Recipe\RecipeController;
+use App\Http\Controllers\Recipe\RecipeLikeController;
 use Illuminate\Routing\Router;
 
 $router = app(Router::class);
