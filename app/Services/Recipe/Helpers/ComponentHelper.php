@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Recipe\Component;
+namespace App\Services\Recipe\Helpers;
 
 use App\Models\Component;
 use Illuminate\Database\Eloquent\Model;

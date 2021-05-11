@@ -3,9 +3,10 @@
 namespace App\Services\Recipe\Updater;
 
 use App\Models\Recipe;
-use App\Services\Recipe\Creator\RecipePropertiesAdder;
+use App\Services\Recipe\Contracts\RecipeUpdater as Updater;
+use App\Services\Recipe\Helpers\RecipePropertiesAdder;
 
-class RecipeUpdater implements RecipeUpdaterInterface
+class RecipeUpdater implements Updater
 {
     private RecipePropertiesAdder $propertiesAdder;
 

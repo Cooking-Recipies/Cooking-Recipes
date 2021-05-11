@@ -1,12 +1,10 @@
 <?php
 
-namespace App\Services\Recipe\Creator;
+namespace App\Services\Recipe\Helpers;
 
 use App\Models\ComponentOnRecipe;
 use App\Models\PhotoOnRecipe;
 use App\Models\TagOnRecipe;
-use App\Services\Recipe\Component\ComponentHelper;
-use App\Services\Recipe\Tag\TagHelper;
 
 class RecipePropertiesAdder
 {

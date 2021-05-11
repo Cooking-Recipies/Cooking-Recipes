@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Services\Profile\Getter;
+namespace App\Services\Profile\Contracts;
 
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
-interface ProfileGetterInterface
+interface ProfileGetter
 {
     public function getPaginated(?string $name, ?string $perPage): LengthAwarePaginator;
 }

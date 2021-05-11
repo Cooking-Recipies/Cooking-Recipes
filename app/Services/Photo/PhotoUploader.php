@@ -4,9 +4,10 @@ namespace App\Services\Photo\Uploader;
 
 use App\Models\Photo;
 use App\Models\User;
+use App\Services\Photo\Contracts\PhotoUploader as Uploader;
 use Illuminate\Http\UploadedFile;
 
-class PhotoUploader implements PhotoUploaderInterface
+class PhotoUploader implements Uploader
 {
     public function uploadPhoto(UploadedFile $photoFile, User $user): Photo
     {

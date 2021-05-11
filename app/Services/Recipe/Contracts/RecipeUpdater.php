@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Services\Recipe\Updater;
+namespace App\Services\Recipe\Contracts;
 
 use App\Models\Recipe;
 
-interface RecipeUpdaterInterface
+interface RecipeUpdater
 {
     public function update(Recipe $recipe, array $data): Recipe;
 }

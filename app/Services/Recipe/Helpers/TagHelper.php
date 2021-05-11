@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Recipe\Tag;
+namespace App\Services\Recipe\Helpers;
 
 use App\Models\Tag;
 use Illuminate\Database\Eloquent\Model;

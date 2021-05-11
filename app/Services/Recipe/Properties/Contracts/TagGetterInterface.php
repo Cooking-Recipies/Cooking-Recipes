@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Recipe\Tag\Getter;
+namespace App\Services\Recipe\Properties\Contracts;
 
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 

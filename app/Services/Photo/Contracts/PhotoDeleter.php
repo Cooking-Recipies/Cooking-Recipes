@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Services\Photo\Deleter;
+namespace App\Services\Photo\Contracts;
 
 use App\Models\Photo;
 
-interface PhotoDeleterInterface
+interface PhotoDeleter
 {
     public function deletePhoto(Photo $photo): void;
 

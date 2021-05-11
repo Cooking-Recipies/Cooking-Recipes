@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Services\Recipe\Creator;
+namespace App\Services\Recipe\Contracts;
 
 use App\Models\User;
 
-interface RecipeCreatorInterface
+interface RecipeCreator
 {
     public function create(User $user, array $data): void;
 }

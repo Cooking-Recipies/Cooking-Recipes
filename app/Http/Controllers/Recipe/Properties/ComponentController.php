@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Rate\Properties;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Name\NameCollection;
-use App\Services\Recipe\Component\Getter\ComponentGetterInterface;
+use App\Services\Recipe\Properties\Contracts\ComponentGetterInterface;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 

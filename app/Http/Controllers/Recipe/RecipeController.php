@@ -10,9 +10,9 @@ use App\Http\Resources\Recipe\RecipeResource;
 use App\Models\Recipe;
 use App\Models\User;
 use App\Services\Basic\Contracts\BasicDeleter;
-use App\Services\Recipe\Creator\RecipeCreatorInterface;
-use App\Services\Recipe\Getter\RecipeGetterInterface;
-use App\Services\Recipe\Updater\RecipeUpdaterInterface;
+use App\Services\Recipe\Contracts\RecipeCreator;
+use App\Services\Recipe\Contracts\RecipeGetter;
+use App\Services\Recipe\Contracts\RecipeUpdater;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -27,7 +27,7 @@ class RecipeController extends Controller
         return new RecipeResource($recipe, $request->user());
     }
 
-    public function create(RecipeRequest $request, RecipeCreatorInterface $creator): JsonResponse
+    public function create(RecipeRequest $request, RecipeCreator $creator): JsonResponse
     {
         $creator->create($request->user(), $request->validated());
 
@@ -36,7 +36,7 @@ class RecipeController extends Controller
         ], Response::HTTP_OK);
     }
 
-    public function update(Recipe $recipe, UpdateRecipeRequest $request, RecipeUpdaterInterface $updater): JsonResponse
+    public function update(Recipe $recipe, UpdateRecipeRequest $request, RecipeUpdater $updater): JsonResponse
     {
         $recipe = $updater->update($recipe, $request->validated());
 
@@ -46,7 +46,7 @@ class RecipeController extends Controller
         ], Response::HTTP_OK);
     }
 
-    public function searchIndex(Request $request, RecipeGetterInterface $getter): ResourceCollection
+    public function searchIndex(Request $request, RecipeGetter $getter): ResourceCollection
     {
         $recipesWithPagination = $getter->getPaginatedBySearchOptions(
             $request->query("title"), $request->query("category"), $request->query("tag"),
@@ -55,14 +55,14 @@ class RecipeController extends Controller
         return new ShortRecipeCollection($recipesWithPagination);
     }
 
-    public function userIndex(User $user, Request $request, RecipeGetterInterface $getter): ResourceCollection
+    public function userIndex(User $user, Request $request, RecipeGetter $getter): ResourceCollection
     {
         $recipesWithPagination = $getter->getPaginatedByUser($user, $request->query("per-page"));
 
         return new ShortRecipeCollection($recipesWithPagination);
     }
 
-    public function meIndex(Request $request, RecipeGetterInterface $getter): ResourceCollection
+    public function meIndex(Request $request, RecipeGetter $getter): ResourceCollection
     {
         $recipesWithPagination = $getter->getPaginatedByUser($request->user(), $request->query("per-page"));
 

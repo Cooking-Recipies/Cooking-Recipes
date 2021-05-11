@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Services\Recipe\Creator;
+namespace App\Services\Recipe;
 
 use App\Models\Recipe;
 use App\Models\User;
+use App\Services\Recipe\Contracts\RecipeCreator as Creator;
+use App\Services\Recipe\Helpers\RecipePropertiesAdder;
 
-class RecipeCreator implements RecipeCreatorInterface
+class RecipeCreator implements Creator
 {
     private RecipePropertiesAdder $propertiesAdder;
 

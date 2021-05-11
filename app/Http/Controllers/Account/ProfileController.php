@@ -8,7 +8,7 @@ use App\Http\Resources\Profile\ProfileCollection;
 use App\Http\Resources\Profile\ProfileResource;
 use App\Models\Profile;
 use App\Services\Basic\Contracts\BasicUpdater;
-use App\Services\Profile\Getter\ProfileGetterInterface;
+use App\Services\Profile\Contracts\ProfileGetter;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -27,7 +27,7 @@ class ProfileController extends Controller
         return new ProfileResource($request->user()->profile);
     }
 
-    public function index(Request $request, ProfileGetterInterface $getter): ResourceCollection
+    public function index(Request $request, ProfileGetter $getter): ResourceCollection
     {
         $profilesWithPagination = $getter->getPaginated($request->query("name"), $request->query("per-page"));
 

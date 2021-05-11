@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Services\Recipe\Getter;
+namespace App\Services\Recipe\Contracts;
 
 use App\Models\User;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
-interface RecipeGetterInterface
+interface RecipeGetter
 {
     public function getPaginatedBySearchOptions(
         ?string $title,  ?string $category, ?string $tag, ?string $component, ?string $perPage): LengthAwarePaginator;

@@ -1,17 +1,18 @@
 <?php
 
-namespace App\Services\Recipe\Component\Getter;
+namespace App\Services\Recipe\Properties;
 
-use App\Models\Component;
+use App\Models\Tag;
+use App\Services\Recipe\Properties\Contracts\TagGetterInterface as Getter;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
-class ComponentGetter implements ComponentGetterInterface
+class TagGetter implements Getter
 {
     public function getPaginated(?string $name, ?string $perPage): LengthAwarePaginator
     {
-        return Component::query()
-            ->select("name")
+        return Tag::query()
             ->where("name", "like", "%{$name}%")
+            ->select("name")
             ->paginate($perPage);
     }
 }
