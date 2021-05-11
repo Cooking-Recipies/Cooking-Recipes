@@ -5,9 +5,9 @@ namespace App\Services\Rate;
 use App\Models\Rate;
 use App\Models\Recipe;
 use App\Models\User;
-use App\Services\Rate\Interfaces\RateCreatorInterface ;
+use App\Services\Rate\Contracts\RateCreator as Creator;
 
-class RateCreator implements RateCreatorInterface
+class RateCreator implements Creator
 {
     public function create(Recipe $recipe, User $user, array $data): void
     {

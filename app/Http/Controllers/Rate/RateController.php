@@ -9,8 +9,8 @@ use App\Models\Rate;
 use App\Models\Recipe;
 use App\Services\Basic\Contracts\BasicDeleter;
 use App\Services\Basic\Contracts\BasicUpdater;
-use App\Services\Rate\Interfaces\RateCreatorInterface;
-use App\Services\Rate\Interfaces\RateGetterInterface;
+use App\Services\Rate\Contracts\RateCreator;
+use App\Services\Rate\Contracts\RateGetter;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
@@ -18,14 +18,14 @@ use Symfony\Component\HttpFoundation\Response;
 
 class RateController extends Controller
 {
-    public function index(Recipe $recipe, Request $request, RateGetterInterface $getter): ResourceCollection
+    public function index(Recipe $recipe, Request $request, RateGetter $getter): ResourceCollection
     {
         $rates = $getter->getPaginated($recipe, $request->query("per-page"));
 
         return new RateCollection($rates, $request->user());
     }
 
-    public function create(Recipe $recipe, RateRequest $request, RateCreatorInterface $creator): JsonResponse
+    public function create(Recipe $recipe, RateRequest $request, RateCreator $creator): JsonResponse
     {
         $creator->create($recipe, $request->user(), $request->validated());
 

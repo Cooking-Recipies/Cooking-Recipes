@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Services\Follow\Deleter;
+namespace App\Services\Follow;
 
 use App\Exceptions\ResourceException;
 use App\Models\User;
+use App\Services\Follow\Contracts\FollowDeleter;
 
-class FollowDeleter implements FollowDeleterInterface
+class ModelFollowDeleter implements FollowDeleter
 {
     public function delete(User $loggedUser, User $following): void
     {
