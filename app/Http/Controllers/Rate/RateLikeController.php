@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Rate;
 
 use App\Http\Controllers\Controller;
 use App\Models\Rate;
-use App\Services\Like\Interfaces\LikeCreator;
-use App\Services\Like\Interfaces\LikeDeleter;
+use App\Services\Like\Contracts\LikeCreator;
+use App\Services\Like\Contracts\LikeDeleter;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;

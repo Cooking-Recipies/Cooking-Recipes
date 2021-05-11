@@ -5,7 +5,7 @@ namespace App\Services\Like;
 use App\Exceptions\ResourceException;
 use Illuminate\Database\Eloquent\Model;
 use Rennokki\Befriended\Contracts\Liker;
-use App\Services\Like\Interfaces\LikeCreator;
+use App\Services\Like\Contracts\LikeCreator;
 
 class ModelLikeCreator implements LikeCreator
 {

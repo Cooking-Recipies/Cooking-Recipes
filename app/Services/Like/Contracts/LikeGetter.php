@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Like\Interfaces;
+namespace App\Services\Like\Contracts;
 
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Rennokki\Befriended\Contracts\Liker;

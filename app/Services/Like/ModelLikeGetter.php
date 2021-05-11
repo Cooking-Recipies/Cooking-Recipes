@@ -2,7 +2,7 @@
 
 namespace App\Services\Like;
 
-use App\Services\Like\Interfaces\LikeGetter;
+use App\Services\Like\Contracts\LikeGetter;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Rennokki\Befriended\Contracts\Liker;
 

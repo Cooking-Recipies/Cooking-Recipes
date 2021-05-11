@@ -3,7 +3,7 @@
 namespace App\Services\Like;
 
 use App\Exceptions\ResourceException;
-use App\Services\Like\Interfaces\LikeDeleter ;
+use App\Services\Like\Contracts\LikeDeleter ;
 use Illuminate\Database\Eloquent\Model;
 use Rennokki\Befriended\Contracts\Liker;
 
