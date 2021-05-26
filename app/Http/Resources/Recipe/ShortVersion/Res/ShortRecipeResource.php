@@ -3,6 +3,7 @@
 namespace App\Http\Resources\Recipe\ShortVersion\Res;
 
 use App\Http\Resources\LikeableResource;
+use App\Http\Resources\Photo\PhotoResource;
 use App\Http\Resources\Recipe\Properties\PhotoOnRecipeResource;
 use App\Http\Resources\Recipe\Properties\TagOnRecipeResource;
 
@@ -16,7 +17,7 @@ class ShortRecipeResource extends LikeableResource
             "title" => $this->title,
             "category" => $this->category->name,
             "tags" => TagOnRecipeResource::collection($this->tagOnRecipe()->get()),
-            "photos" => PhotoOnRecipeResource::collection($this->photoOnRecipe()->get()),
+            "main_photo" => new PhotoResource($this->main_photo),
             "likes" => $this->with($request),
         ];
     }

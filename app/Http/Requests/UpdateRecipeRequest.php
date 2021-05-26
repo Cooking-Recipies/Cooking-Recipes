@@ -41,6 +41,10 @@ class UpdateRecipeRequest extends ApiRequest
                 "string",
                 new PhotoExists($this->user()),
             ],
+            "main_photo" => [
+                "string",
+                new PhotoExists($this->user()),
+            ],
         ];
     }
 }

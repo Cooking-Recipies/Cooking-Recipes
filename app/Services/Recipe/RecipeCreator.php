@@ -25,6 +25,7 @@ class RecipeCreator implements Creator
             "number_of_people" => $data["number_of_people"],
             "preparing_time" => $data["preparing_time"],
             "instruction" => $data["instruction"],
+            "main_photo" => $data["main_photo"],
         ]);
 
         $this->propertiesAdder->addComponents($data["components"], $recipe->id);

@@ -3,6 +3,7 @@
 namespace App\Http\Resources\Recipe;
 
 use App\Http\Resources\LikeableResource;
+use App\Http\Resources\Photo\PhotoResource;
 use App\Http\Resources\Recipe\Properties\ComponentOnRecipeResource;
 use App\Http\Resources\Recipe\Properties\PhotoOnRecipeResource;
 use App\Http\Resources\Recipe\Properties\TagOnRecipeResource;
@@ -21,7 +22,8 @@ class RecipeResource extends LikeableResource
             "crated_by_logged_user" => $this->user->is($this->loggedUser),
             "components" => ComponentOnRecipeResource::collection($this->componentOnRecipe()->get()),
             "tags" => TagOnRecipeResource::collection($this->tagOnRecipe()->get()),
-            "photos" => PhotoOnRecipeResource::collection($this->photoOnRecipe()->get())
+            "photos" => PhotoOnRecipeResource::collection($this->photoOnRecipe()->get()),
+            "main_photo" => new PhotoResource($this->main_photo),
         ];
     }
 }
