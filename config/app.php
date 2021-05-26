@@ -53,6 +53,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\TelescopeServiceProvider::class,
         App\Providers\PhotoServiceProvider::class,
         App\Providers\BasicServiceProvider::class,
         App\Providers\ProfileServiceProvider::class,

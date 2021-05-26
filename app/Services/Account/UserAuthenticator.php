@@ -6,7 +6,7 @@ namespace App\Services\Account;
 
 use App\Models\User;
 use App\Services\Account\Contracts\UserAuthenticator as Authenticator;
-use App\Services\Authentication\PasswordHelper;
+use App\Traits\PasswordHelper;
 use Illuminate\Auth\AuthenticationException;
 
 class UserAuthenticator implements Authenticator

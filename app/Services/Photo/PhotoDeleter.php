@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Photo\Deleter;
+namespace App\Services\Photo;
 
 use App\Models\Photo;
 use App\Services\Photo\Contracts\PhotoDeleter as Deleter;

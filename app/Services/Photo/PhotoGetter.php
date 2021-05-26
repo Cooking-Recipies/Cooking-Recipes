@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Photo\Getter;
+namespace App\Services\Photo;
 
 use App\Models\User;
 use App\Services\Photo\Contracts\PhotoGetter as Getter;

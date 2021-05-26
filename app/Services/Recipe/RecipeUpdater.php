@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Recipe\Updater;
+namespace App\Services\Recipe;
 
 use App\Models\Recipe;
 use App\Services\Recipe\Contracts\RecipeUpdater as Updater;

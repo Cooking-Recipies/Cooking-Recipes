@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Photo\Uploader;
+namespace App\Services\Photo;
 
 use App\Models\Photo;
 use App\Models\User;

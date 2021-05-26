@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Services\Account;
 
 use App\Models\User;
-use App\Services\Authentication\PasswordHelper;
+use App\Traits\PasswordHelper;
 use App\Services\Account\Contracts\PasswordUpdater as Updater;
 use Dotenv\Exception\ValidationException;
 
