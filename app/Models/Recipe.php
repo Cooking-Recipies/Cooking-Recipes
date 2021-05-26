@@ -19,6 +19,7 @@ class Recipe extends Model implements UserResource, Likeable
 
     protected $fillable = [
         "user_id",
+        "main_photo",
         "title",
         "number_of_people",
         "preparing_time",
