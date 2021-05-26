@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Recipe\Getter;
+namespace App\Services\Recipe;
 
 use App\Models\Recipe;
 use App\Models\User;

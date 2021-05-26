@@ -6,7 +6,7 @@ namespace App\Services\Account;
 
 use App\Models\User;
 use App\Services\Account\Contracts\UserRegister as Register;
-use App\Services\Authentication\PasswordHelper;
+use App\Traits\PasswordHelper;
 
 class UserRegister implements Register
 {

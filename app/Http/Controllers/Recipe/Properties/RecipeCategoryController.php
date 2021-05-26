@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Rate\Properties;
+namespace App\Http\Controllers\Recipe\Properties;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Category\RecipeCategoryResource;
